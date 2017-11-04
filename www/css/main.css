@@ -1,0 +1,280 @@
+@media only screen and (max-width: 900px) {
+
+    body{
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    #inputs{
+      width: 100%;
+    }
+
+    .tab-data{
+      display: block;
+      float: left;
+    }
+
+    #input-holder{
+      width: 100%;
+      margin: 0px;
+      border: 0px;
+      padding: 0px;
+    }
+
+    .class-input{
+      width: 80%;
+    }
+
+    #calendar-controls {
+      text-align: center;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+
+    #calendar-controls *{
+      display: inline;
+    }
+
+    .Su, .Sa{
+      display: none;
+    }
+
+    .time-long{
+      display: none;
+    }
+
+    .section-p{
+      display: none;
+    }
+
+    .classname-p{
+      z-index: 5;
+      text-align: center;
+      font-size: .6em;
+      color: #2c3e50;
+    }
+
+    .tab-data{
+      width: 100%;
+    }
+
+    .calendar-break{
+      display: none;
+    }
+
+    .background-div{
+      width: 100%;
+      position: absolute;
+      margin-left: -15px;
+    }
+
+    .tab-data{
+      margin-top: 100px;
+    }
+
+}
+
+
+@media only screen and (min-width: 901px) {
+
+  .time-short{
+    display: none;
+  }
+
+
+.header{
+  text-align: center;
+}
+
+#cal{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: auto;
+}
+
+#cal-container{
+  height: 85%;
+  width: 100%;
+}
+
+.time{
+  font-size: 15px;
+}
+
+.inner{
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 45px;
+}
+
+#calendar-controls{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.controls{
+  margin-top: 20px;
+  height: 10%;
+}
+
+#calendar-controls span,p{
+  display: inline-block;
+}
+
+.background-div{
+  width: 100%;
+  position: absolute;
+  box-shadow: 3px 3px grey;
+}
+
+.calendar-break{
+  visibility: hidden;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.class-info{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 5;
+  font-family: fantasy;
+  color: #2c3e50;
+}
+
+.calendar-text-small{
+  font-size: 10px;
+  visibility: visible;
+}
+
+.form-control{
+  width: 100%;
+}
+
+.time{
+  color: #gray
+}
+
+#content-holder{
+  width: 100%;
+  height: 90%;
+  border: #bdc3c7 solid 1px;
+}
+
+#inputs{
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 100%;
+  float: left;
+  width: 20%;
+}
+
+.input-container{
+  padding-bottom: 20px;
+}
+
+#main-content{
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+  width: 75%;
+}
+
+.card{
+  height: 100%;
+}
+
+.class-input{
+  width: 60%;
+}
+
+}
+
+/*********************** All *************************/
+
+.selected-color-1{
+  background-color: #e74c3c;
+}
+
+.selected-color-2{
+  background-color: #FFEB3B;
+}
+
+.selected-color-3{
+  background-color: #2980b9;
+}
+
+.selected-color-4{
+  background-color: #9b59b6;
+}
+
+.selected-color-5{
+  background-color: #e67e22;
+}
+
+.selected-color-6{
+  background-color: #34495e;
+}
+
+.selected-color-7{
+  background-color: #1abc9c;
+}
+
+.selected-color-8{
+  background-color: orange;
+}
+
+#inputs{
+  display: block;
+  float: left;
+}
+
+#inputs .controls{
+  display: inline;
+}
+
+.input-row button{
+  display: inline;
+  float: right;
+}
+
+.class-input{
+  display: inline;
+}
+
+#inputs .controls{
+  display: inline;
+}
+
+.searchSuggestionBox{
+  display: none;
+  position: absolute;
+  border: solid #4ab3e2 1px;
+  background-color: #fff;
+  cursor: default;
+}
+
+.search_suggestion_item{
+  display: block;
+  width: 100%;
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.search_suggestion_item:hover{
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.inner{
+  border: #bdc3c7 solid 1px;
+}

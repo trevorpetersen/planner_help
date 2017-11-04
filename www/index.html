@@ -1,0 +1,66 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width">
+
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="js/calendar.js" type="text/javascript"></script>
+  <script src="js/main.js" type="text/javascript"></script>
+
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+
+  <body>
+
+    <div>
+      <h1 class="header text-muted">Planning Help </h1>
+    </div>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" id="GEN" onclick="switchTab(this)" href="#" >Generate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="GPA" onclick="switchTab(this)" href="#">GPA</a>
+      </li>
+    </ul>
+
+
+    <div id='content-holder'>
+
+      <div id='inputs'>
+        <div class="controls">
+          <button onclick="addClassInput('')" class="btn btn-outline-primary">Add Class</button>
+          <button onclick="displayResults()" class="btn btn-outline-primary">Create Schedules</button>
+        </div>
+
+        <div id="input-holder"></div>
+      </div>
+
+
+      <div id="GEN-data" class="tab-data">
+
+          <div id="calendar-controls" class="controls">
+            <button type="button" onclick="loadPrevCombo()" class="btn btn-outline-primary">Prev</button>
+            <p class="text-muted"> <span id='currentCourseNum'> </span> of <span id='maxCourseNum'> </span></p>
+            <button type="button" onclick="loadNextCombo()" class="btn btn-outline-primary">Next</button>
+            <br />
+
+          </div>
+          <div id="cal-container">
+            <div class="card">
+              <div id="cal" class="container card-block"></div>
+            </div>
+          </div>
+      </div>
+
+      <div id='GPA-data' class='tab-data'>
+        hi this is longer
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
