@@ -20,7 +20,6 @@ router.post(GET_CLASS_SUGGESTIONS, function(req, res, next){
   let userText = req.body.userText;
 
   getClassSuggestions(userText).then(function(wordArray){
-    //console.log(wordArray);
     res.statusCode = 200;
     res.send(JSON.stringify(wordArray));
   });
@@ -35,7 +34,7 @@ router.post(GET_CLASSES, function(req, res, next){
     handleBadPostData(next);
     return;
   }
-  className = req.body.classname;
+  let className = req.body.classname;
   getClasses(className).then(function(classes){
     res.statusCode = 200;
     res.send(JSON.stringify(classes));
@@ -60,7 +59,9 @@ function getCapes(req, res, next){
 
 function getClasses(className){
   return new Promise(function(resolve, reject){
-    sql.getClasses(className).then(function(classes){
+    sql.getClasses(className)
+
+    .then(function(classes){
       resolve(classes);
     })
 
@@ -93,6 +94,10 @@ function getClassSuggestions(userText){
 
   .then(function(){
     return sql.getMatchingClasses(userText);
+  })
+
+  .catch(function(err){
+    console.log(err)
   })
 
 }

@@ -12,13 +12,13 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Connected to mysql!");
 });
 
 
 exports.getClasses = function(className){
   return new Promise(function(resolve, reject){
-    query = "SELECT * from current_classes where CLASS_NAME LIKE ? and (FK_SPM_SPCL_MTG_CD is NULL)";
+    let query = "SELECT * from current_classes where CLASS_NAME LIKE ? and (FK_SPM_SPCL_MTG_CD is NULL)";
     con.query(query,[className], function (err, result, fields) {
       if (err){
         reject(err);
@@ -32,7 +32,7 @@ exports.getClasses = function(className){
 
 exports.getMatchingClasses = function(userText){
   return new Promise(function(resolve, reject){
-    query = "SELECT * from course_catalog where course_name LIKE ?";
+    let query = "SELECT * from course_catalog where course_name LIKE ?";
     con.query(query,["%" + userText + "%"], function (err, result, fields) {
       if (err){
         reject(err);
@@ -54,7 +54,6 @@ function getBestMatches(queryString, classArray, maxNum){
   for(let i = 0; i < classArray.length; i++){
     let currentClass = classArray[i].toUpperCase();
     if(currentClass.indexOf(queryString) == 0){
-      console.log("Found best match: " + currentClass);
       bestMatches.push(currentClass);
     }else{
       okMatches.push(currentClass);
