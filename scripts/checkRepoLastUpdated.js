@@ -1,8 +1,10 @@
 "use strict"
 var request = require("request");
+var config = require("../config");
 var fs = require('fs');
 
 let url = "https://api.github.com/repos/trevorpetersen/planner_help";
+let urlParams = "access_token=" + config.github.token;
 let lastUpdatedFileName = "last_updated";
 
 
@@ -47,7 +49,7 @@ function getNewUpdateTime(){
     "User-agent": userAgent
   }
   let requestObj = {
-    url: url,
+    url: url + "?" + urlParams,
     json: true,
     headers: headers
   }
@@ -60,10 +62,10 @@ function getNewUpdateTime(){
 
       let repoObject = body;
 
-      if(repoObject.updated_at == null){
-        reject("JSON response has not \"updated_at\" field");
+      if(repoObject.pushed_at == null){
+        reject("JSON response has not \"pushed_at\" field");
       }
-      resolve(repoObject.updated_at)
+      resolve(repoObject.pushed_at)
     });
   });
 }
@@ -72,7 +74,6 @@ function overwriteFile(newFileContents){
   fs.truncate(lastUpdatedFileName, 0, function() {
     fs.writeFile(lastUpdatedFileName, newFileContents, function (err) {
       if (err) {
-        // Handle error
       }
     });
   });
