@@ -4,8 +4,10 @@ var graphColors = ['blue', 'red', 'green', 'pink', 'orange', 'purple', 'black'];
 
 //TODO Look into displaying bar graph tabs (seems to work on mobile, but not desktop)
 $(document).ready(function(){
+  hideTabs();
+
   addClassInput('');
-  //addClassInput('cse 11');
+  addClassInput('cse 11');
   //addClassInput('math 109');
   //addClassInput('math 20b');
   //addClassInput('phil 27');
@@ -15,14 +17,13 @@ $(document).ready(function(){
   createCalendar();
   createBarGraph("Createive title",["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],[12, 19, 3, 5, 2, 3]);
 
-  hideTabs();
   showTab('GEN-data');
 });
 
 function createBarGraph(title, labels, data){
   var ctx = document.getElementById("gpa-bar-graph").getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
         labels: labels,
         datasets: [{
@@ -49,7 +50,7 @@ function createBarGraph(title, labels, data){
 
 function addClassInput(val){
   let newInput = createClassInput(val);
-  document.getElementById("input-holder").appendChild(newInput);
+  document.getElementById("class-input-holder").appendChild(newInput);
 }
 
 function createClassInput(val){

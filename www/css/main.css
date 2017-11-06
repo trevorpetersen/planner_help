@@ -1,111 +1,86 @@
-@media only screen and (max-width: 900px) {
-
-    body{
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-
-    #inputs{
-      width: 100%;
-    }
-
-    .tab-data{
-      display: block;
-      float: left;
-    }
-
-    #input-holder{
-      width: 100%;
-      margin: 0px;
-      border: 0px;
-      padding: 0px;
-    }
-
-    .class-input{
-      width: 80%;
-    }
-
-    #calendar-controls {
-      text-align: center;
-      margin-top: 5%;
-      margin-bottom: 5%;
-    }
-
-    #calendar-controls *{
-      display: inline;
-    }
-
-    .Su, .Sa{
-      display: none;
-    }
-
-    .time-long{
-      display: none;
-    }
-
-    .section-p{
-      display: none;
-    }
-
-    .classname-p{
-      z-index: 5;
-      text-align: center;
-      font-size: .6em;
-      color: #2c3e50;
-    }
-
-    .tab-data{
-      width: 100%;
-    }
-
-    .calendar-break{
-      display: none;
-    }
-
-    .background-div{
-      width: 100%;
-      position: absolute;
-      margin-left: -15px;
-    }
-
-    .tab-data{
-      margin-top: 100px;
-    }
-
-}
-
-
-@media only screen and (min-width: 901px) {
-
-  .time-short{
-    display: none;
-  }
-
-
-.header{
-  text-align: center;
-}
-
-#cal{
-  width: 100%;
+body{
   height: 100%;
-  text-align: center;
-  overflow: auto;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-#cal-container{
-  height: 85%;
+#content-holder{
   width: 100%;
 }
 
-.time{
-  font-size: 15px;
+.tab-data{
+  width: 100%;
+}
+@media only screen and (max-width: 900px) {
+  .tab-data{
+    display: block;
+    float: left;
+    margin-top: 100px;
+  }
 }
 
-.inner{
-  padding-left: 0px;
-  padding-right: 0px;
-  height: 45px;
+#input-holder{
+  width: 100%;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+.input-container{
+  padding-right: 20px;
+  display: inline-block;
+  width: 25%;
+}
+@media only screen and (max-width: 900px) {
+  .input-container{
+    padding-top: 20px;
+    display: block;
+    width: 100%;
+  }
+}
+
+#class-input-holder{
+  width: 100%;
+}
+
+.input-row{
+  width: 100%;
+  display: inline;
+}
+
+.class-input{
+  display: inline;
+  width: 80%;
+}
+
+.input-row button{
+  display: inline;
+  float: right;
+}
+
+.searchSuggestionBox{
+  display: none;
+  position: absolute;
+  border: solid #4ab3e2 1px;
+  background-color: #fff;
+  cursor: default;
+  z-index: 5;
+}
+
+.search_suggestion_item{
+  display: block;
+  width: 100%;
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.search_suggestion_item:hover{
+  background-color: #007bff;
+  color: #fff;
 }
 
 #calendar-controls{
@@ -123,10 +98,55 @@
   display: inline-block;
 }
 
+/*************** Cal **********************/
+
+.header{
+text-align: center;
+}
+
+#cal{
+width: 100%;
+height: 100%;
+text-align: center;
+overflow: auto;
+}
+
+#cal-container{
+height: 85%;
+width: 100%;
+}
+
+.time{
+font-size: 15px;
+color: #gray
+}
+@media only screen and (max-width: 900px) {
+  .time{
+    padding: 0;
+  }
+}
+
+
+.inner{
+padding-left: 0px;
+padding-right: 0px;
+height: 45px;
+}
+
+.inner{
+  border: #bdc3c7 solid 1px;
+}
+
 .background-div{
   width: 100%;
   position: absolute;
   box-shadow: 3px 3px grey;
+}
+@media only screen and (max-width: 900px) {
+  .background-div{
+    width: 100%;
+    position: absolute;
+  }
 }
 
 .calendar-break{
@@ -135,6 +155,11 @@
   margin-bottom: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
+}
+@media only screen and (max-width: 900px) {
+  .calendar-break{
+    display: none;
+  }
 }
 
 .class-info{
@@ -151,51 +176,32 @@
   visibility: visible;
 }
 
-.form-control{
-  width: 100%;
+.time-long{
+  display: block;
+}
+@media only screen and (max-width: 900px) {
+  .time-long{
+    display: none;
+  }
 }
 
-.time{
-  color: #gray
+.time-short{
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  .time-short{
+    display: block;
+  }
 }
 
-#content-holder{
-  width: 100%;
-  height: 90%;
-  border: #bdc3c7 solid 1px;
-}
 
-#inputs{
-  margin-left: 25px;
-  margin-right: 25px;
-  height: 100%;
-  float: left;
-  width: 20%;
-}
 
-.input-container{
-  padding-bottom: 20px;
-}
 
-#main-content{
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  float: left;
-  width: 75%;
-}
 
-.card{
-  height: 100%;
-}
 
-.class-input{
-  width: 60%;
-}
 
-}
+/***************************************/
 
-/*********************** All *************************/
 
 .selected-color-1{
   background-color: #e74c3c;
@@ -229,56 +235,19 @@
   background-color: orange;
 }
 
-#inputs{
-  display: block;
-  float: left;
-}
+@media only screen and (max-width: 900px) {
+  .Su, .Sa{
+    display: none;
+  }
 
-#inputs .controls{
-  display: inline;
-}
+  .section-p{
+    display: none;
+  }
 
-.input-row button{
-  display: inline;
-  float: right;
-}
-
-.class-input{
-  display: inline;
-}
-
-#inputs .controls{
-  display: inline;
-}
-
-.searchSuggestionBox{
-  display: none;
-  position: absolute;
-  border: solid #4ab3e2 1px;
-  background-color: #fff;
-  cursor: default;
-}
-
-.search_suggestion_item{
-  display: block;
-  width: 100%;
-  color: #007bff;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  padding-top: 0;
-}
-
-.search_suggestion_item:hover{
-  background-color: #007bff;
-  color: #fff;
-}
-
-.inner{
-  border: #bdc3c7 solid 1px;
-}
-
-#gpa-bar-graph{
-  width: 100%;
-  height: 100%;
+  .classname-p{
+    z-index: 5;
+    text-align: center;
+    font-size: .6em;
+    color: #2c3e50;
+  }
 }

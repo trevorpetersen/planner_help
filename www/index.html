@@ -10,33 +10,38 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="css/main.css" rel="stylesheet" type="text/css"/>
+
 </head>
 
   <body>
-
-    <div>
+    <div id="header-holder">
       <h1 class="header text-muted">Planning Help </h1>
     </div>
 
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" id="GEN" onclick="switchTab(this)" href="#" >Generate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="GPA" onclick="switchTab(this)" href="#">GPA</a>
-      </li>
-    </ul>
+    <div id="navbar">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" id="GEN" onclick="switchTab(this)" href="#" >Generate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="GPA" onclick="switchTab(this)" href="#">GPA</a>
+        </li>
+      </ul>
+    </div>
+
 
 
     <div id='content-holder'>
 
-      <div id='inputs'>
+      <div id='input-holder'>
         <div class="controls">
           <button onclick="addClassInput('')" class="btn btn-outline-primary">Add Class</button>
           <button onclick="displayResults()" class="btn btn-outline-primary">Create Schedules</button>
         </div>
 
-        <div id="input-holder"></div>
+        <div id="class-input-holder"></div>
+
+
       </div>
 
 
