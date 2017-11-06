@@ -100,6 +100,15 @@ body{
 
 /*************** Cal **********************/
 
+#cal-container{
+  margin-top: 50px;
+}
+@media only screen and (max-width: 900px) {
+  #cal-container{
+    margin-top: 0; 
+  }
+}
+
 .header{
 text-align: center;
 }
