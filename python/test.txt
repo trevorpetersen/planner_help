@@ -1,0 +1,50 @@
+CLASS_NAME	PERSON_FULL_NAME	BEGIN_HH_TIME	SECTION_END_DATE	AVAIL_SEAT	DAY_CODE	BLDG_CODE	BEGIN_MM_TIME	FK_CDI_INSTR_TYPE	FK_SPM_SPCL_MTG_CD	COUNT_ON_WAITLIST	END_HH_TIME	PRIMARY_INSTR_FLAG	LONG_DESC	END_MM_TIME	SECTION_START_DATE	STP_ENRLT_FLAG	SCTN_ENRLT_QTY	START_DATE	ROOM_CODE	SECTION_NUMBER	SECT_CODE	BEFORE_DESC	SCTN_CPCTY_QTY	FK_SST_SCTN_STATCD
+AAS 198	Chapman, Thandeka K	0	2017-12-08	9999	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-09-28	N	0	 	TBA	907407	001	 	9999	AC	
+AESE 278A	Sorenson, Harold W.	8	2017-12-08	1	56	     	0	LE	  	0	17	Y	                              	0	2017-09-28	N	34	2017-09-28	     	920833	A00	 	35	AC	
+AESE 278A	Sorenson, Harold W.	8	2017-12-08	1	1	     	0	LE	FI	0	10	Y	                              	59	2017-09-28	N	34	2017-12-11	     	920833	A00	 	35	AC	
+AESE 279A	Sorenson, Harold W.	8	2017-12-08	1	56	     	0	IN	  	0	17	Y	                              	0	2017-09-28	N	34	2017-09-28	     	920350	A00	 	35	AC	
+AIP 197	Wienhausen, Gabriele	0	2017-12-08	9993	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-09-28	N	6	 	TBA	913891	A00	 	9999	AC	
+AIP 197F	Wienhausen, Gabriele	0	2017-12-08	9999	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-09-28	N	0	 	TBA	913892	A00	 	9999	AC	
+AIP 197P	Wienhausen, Gabriele	0	2017-12-08	9998	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-09-28	N	1	 	TBA	913893	A00	 	9999	AC	
+AIP 197T	Wienhausen, Gabriele	0	2017-12-08	9999	 	TBA	0	FW	TBA	0	0	Y	                              	0	2017-09-28	N	0	 	TBA	913894	A00	 	9999	AC	
+ANAR 100	D'Alpoim Guedes, Jade A	15	2017-12-08	2	24	SSB  	30	LE	  	0	16	Y	Population and Food           	50	2017-09-28	N	18	2017-09-28	105  	918055	A00	 	20	AC	
+ANAR 100	D'Alpoim Guedes, Jade A	15	2017-12-08	2	1	SSB  	0	LE	FI	0	17	Y	Population and Food           	59	2017-09-28	N	18	2017-12-11	105  	918055	A00	 	20	AC	
+ANAR 100	Staff	0	2017-12-08	0	 	TBA	0	LE	TBA	0	0	 	                              	0	2017-09-28	N	0	 	TBA	920667	B00	AC                            	0	CA	
+ANAR 164	Rivera-Collazo, Isabel C	9	2017-12-08	0	24	HSS  	30	LE	  	0	10	Y	                              	50	2017-09-28	N	20	2017-09-28	1128A	913048	A00	 	20	AC	
+ANAR 164	Rivera-Collazo, Isabel C	8	2017-12-08	0	4	HSS  	0	LE	FI	0	10	Y	                              	59	2017-09-28	N	20	2017-12-14	1128A	913048	A00	 	20	AC	
+ANBI 135	Non, Amy L	10	2017-12-08	0	2	SSRB 	30	LA	  	3	12	Y	                              	20	2017-09-28	Y	12	2017-09-28	339  	920603	B01	 	12	AC	
+ANBI 135	Non, Amy L	9	2017-12-08	0	4	SSRB 	0	LA	  	3	10	Y	                              	50	2017-09-28	Y	12	2017-09-28	339  	920604	B02	 	12	AC	
+ANBI 135	Non, Amy L	9	2017-12-08	20	2	SSB  	30	LE	  	0	10	Y	                              	20	2017-09-28	N	0	2017-09-28	269  	920602	B00	 	20	NC	
+ANBI 135	Staff	0	2017-12-08	0	 	TBA	0	LE	TBA	0	0	 	                              	0	2017-09-28	N	0	 	TBA	913049	A00	NC                            	0	CA	
+ANBI 135	Staff	0	2017-12-08	0	 	TBA	0	LA	TBA	3	0	 	                              	0	2017-09-28	Y	0	 	TBA	913050	A01	AC                            	0	CA	
+ANBI 141	Schoeninger, Margaret J	14	2017-12-08	0	24	CSB  	0	LE	  	0	15	Y	                              	20	2017-09-28	N	48	2017-09-28	004  	913051	A00	 	48	AC	
+ANBI 141	Schoeninger, Margaret J	15	2017-12-08	0	4	CSB  	0	LE	FI	0	17	Y	                              	59	2017-09-28	N	48	2017-12-14	004  	913051	A00	 	48	AC	
+ANBI 145	Staff	8	2017-12-08	1	135	SOLIS	0	LE	  	0	8	 	                              	50	2017-09-28	N	27	2017-09-28	110  	918129	A00	 	28	AC	
+ANBI 145	Staff	8	2017-12-08	1	1	SOLIS	0	LE	FI	0	10	 	                              	59	2017-09-28	N	27	2017-12-11	110  	918129	A00	 	28	AC	
+ANBI 148	Lafleur, Marni M	12	2017-12-08	32	135	HSS  	0	LE	  	0	12	Y	                              	50	2017-09-28	N	0	2017-09-28	1305 	913052	A00	 	32	NC	
+ANBI 148	Lafleur, Marni M	11	2017-12-08	32	4	HSS  	30	LE	FI	0	14	Y	                              	29	2017-09-28	N	0	2017-12-14	1305 	913052	A00	 	32	NC	
+ANBI 148	Lafleur, Marni M	0	2017-12-08	9	 	TBA	0	LA	TBA	0	0	Y	                              	0	2017-09-28	N	23	 	TBA	913053	A01	 	32	AC	
+ANES 223	Hertzka, Robert Ernest	0	2017-12-18	9999	 	TBA	0	LE	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	921133	A00	 	9999	AC	
+ANES 227	Ahadian, Farshad	0	2017-12-18	2	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	921134	A00	 	2	AC	
+ANES 229	Weinstein, Lawrence	0	2017-12-18	3	 	TBA	0	PR	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	921136	A01	 	3	AC	
+ANES 229	Weinstein, Lawrence	0	2017-12-18	3	 	TBA	0	LE	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	921135	A00	 	3	NC	
+ANES 296	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919502	001	 	9999	AC	
+ANES 296	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919503	002	 	9999	AC	
+ANES 296	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919504	003	 	9999	AC	
+ANES 299	Patel, Piyush M	0	2017-12-18	9998	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-08-14	N	1	 	TBA	919505	001	 	9999	AC	
+ANES 299	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919506	002	 	9999	AC	
+ANES 299	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919507	003	 	9999	AC	
+ANES 299	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919508	004	 	9999	AC	
+ANES 401	Greenberg, Mark	0	2017-12-18	9996	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	3	 	TBA	919509	A00	 	9999	AC	
+ANES 402	Polston, Gregory Robert	0	2017-12-18	9994	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	5	 	TBA	919511	A01	 	9999	AC	
+ANES 402	Polston, Gregory Robert	0	2017-12-18	9999	 	TBA	0	LE	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	919510	A00	 	9999	NC	
+ANES 403	Meier, Angela	0	2017-12-18	9997	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	2	 	TBA	919512	A00	 	9999	AC	
+ANES 410	Greenberg, Mark	0	2017-12-18	9994	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	5	 	TBA	919513	A00	 	9999	AC	
+ANES 427	Doucet, Jay	0	2017-12-18	9999	 	TBA	0	CL	TBA	0	0	Y	                              	0	2017-08-14	N	0	 	TBA	919514	A00	 	9999	AC	
+ANES 496	Lee, Daniel E.	0	2017-12-18	9998	 	TBA	0	IN	TBA	0	0	Y	                              	0	2017-08-14	N	1	 	TBA	919515	001	 	9999	AC	
+ANES 496	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919516	002	 	9999	AC	
+ANES 496	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919517	003	 	9999	AC	
+ANES 496	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919518	004	 	9999	AC	
+ANES 496	Staff	0	2017-12-18	9999	 	TBA	0	IN	TBA	0	0	 	                              	0	2017-08-14	N	0	 	TBA	919519	005	 	9999	AC	
+ANSC 105	Staff	16	2017-12-08	9	135	PETER	0	LE	  	0	16	 	                              	50	2017-09-28	N	26	2017-09-28	103  	919421	B00	 	35	AC	
+ANSC 105	Staff	0	2017-12-08	0	 	TBA	0	LE	TBA	0	0	 	                              	0	2017-09-28	N	0	 	TBA	913056	A00	AC                            	0	CA	

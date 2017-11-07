@@ -1,0 +1,24 @@
+PRINT_FLAG	PERSON_FULL_NAME	BEGIN_HH_TIME	SECTION_END_DATE	AVAIL_SEAT	DAY_CODE	BLDG_CODE	BEGIN_MM_TIME	FK_CDI_INSTR_TYPE	FK_SPM_SPCL_MTG_CD	COUNT_ON_WAITLIST	END_HH_TIME	PRIMARY_INSTR_FLAG	LONG_DESC	END_MM_TIME	SECTION_START_DATE	STP_ENRLT_FLAG	SCTN_ENRLT_QTY	START_DATE	ROOM_CODE	SECTION_NUMBER	SECT_CODE	BEFORE_DESC	SCTN_CPCTY_QTY	FK_SST_SCTN_STATCD	
+ 	Cao, Yingjun	17	2017-12-08	-2	3	EBU3B	0	LA	  	10	17	Y	                              	50	2017-09-28	Y	61	2017-09-28	B230 	918073	A50	 	59	AC	
+ 	Cao, Yingjun	18	2017-12-08	0	3	EBU3B	0	LA	  	8	18	Y	                              	50	2017-09-28	Y	59	2017-09-28	B230 	918074	A51	 	59	AC	
+ 	Cao, Yingjun	19	2017-12-08	-1	3	EBU3B	0	LA	  	5	19	Y	                              	50	2017-09-28	Y	60	2017-09-28	B230 	918075	A52	 	59	AC	
+ 	Cao, Yingjun	9	2017-12-08	-1	2	EBU3B	0	LA	  	18	9	Y	                              	50	2017-09-28	Y	46	2017-09-28	B230 	918085	C50	 	45	AC	
+ 	Cao, Yingjun	10	2017-12-08	-2	2	EBU3B	0	LA	  	26	10	Y	                              	50	2017-09-28	Y	47	2017-09-28	B230 	918086	C51	 	45	AC	
+ 	Cao, Yingjun	11	2017-12-08	-1	2	EBU3B	0	LA	  	23	11	Y	                              	50	2017-09-28	Y	46	2017-09-28	B230 	918087	C52	 	45	AC	
+ 	Cao, Yingjun	9	2017-12-08	0	4	EBU3B	0	LA	  	13	9	Y	                              	50	2017-09-28	Y	45	2017-09-28	B230 	918091	D50	 	45	AC	
+ 	Cao, Yingjun	10	2017-12-08	-1	4	EBU3B	0	LA	  	13	10	Y	                              	50	2017-09-28	Y	46	2017-09-28	B230 	918092	D51	 	45	AC	
+ 	Cao, Yingjun	11	2017-12-08	-1	4	EBU3B	0	LA	  	12	11	Y	                              	50	2017-09-28	Y	46	2017-09-28	B230 	918093	D52	 	45	AC	
+ 	Cao, Yingjun	8	2017-12-08	192	135	PCYNH	0	LE	  	0	8	Y	                              	50	2017-09-28	N	0	2017-09-28	106  	918070	A00	 	192	NC	
+ 	Staff	20	2017-12-08	192	1	PCYNH	0	DI	  	0	20	 	                              	50	2017-09-28	N	0	2017-09-28	109  	918071	A01	 	192	NC	
+ 	Cao, Yingjun	12	2017-12-08	149	135	SOLIS	0	LE	  	0	12	Y	                              	50	2017-09-28	N	0	2017-09-28	104  	918082	C00	 	149	NC	
+ 	Staff	18	2017-12-08	149	3	MANDE	0	DI	  	0	18	 	                              	50	2017-09-28	N	0	2017-09-28	B-210	918083	C01	 	149	NC	
+ 	Cao, Yingjun	18	2017-12-08	146	135	CENTR	0	LE	  	0	18	Y	                              	50	2017-09-28	N	0	2017-09-28	113  	918088	D00	 	146	NC	
+ 	Staff	19	2017-12-08	146	3	CENTR	0	DI	  	0	19	 	                              	50	2017-09-28	N	0	2017-09-28	113  	918089	D01	 	146	NC	
+ 	Cao, Yingjun	8	2017-12-08	192	1	PCYNH	0	LE	FI	0	10	Y	                              	59	2017-09-28	N	0	2017-12-11	106  	918070	A00	 	192	NC	
+ 	Cao, Yingjun	11	2017-12-08	149	4	SOLIS	30	LE	FI	0	14	Y	                              	29	2017-09-28	N	0	2017-12-14	104  	918082	C00	 	149	NC	
+ 	Cao, Yingjun	19	2017-12-08	146	1	CENTR	0	LE	FI	0	21	Y	                              	59	2017-09-28	N	0	2017-12-11	113  	918088	D00	 	146	NC	
+ 	Staff	0	2017-12-08	0	 	TBA	0	LE	TBA	0	0	 	                              	0	2017-09-28	N	0	 	TBA	918076	B00	NC                            	0	CA	
+ 	Staff	0	2017-12-08	0	 	TBA	0	DI	TBA	0	0	 	                              	0	2017-09-28	N	0	 	TBA	918077	B01	NC                            	0	CA	
+ 	Staff	0	2017-12-08	0	 	TBA	0	LA	TBA	4	0	 	                              	0	2017-09-28	Y	0	 	TBA	918079	B50	AC                            	0	CA	
+ 	Staff	0	2017-12-08	0	 	TBA	0	LA	TBA	4	0	 	                              	0	2017-09-28	Y	0	 	TBA	918080	B51	AC                            	0	CA	
+ 	Staff	0	2017-12-08	0	 	TBA	0	LA	TBA	1	0	 	                              	0	2017-09-28	Y	0	 	TBA	918081	B52	AC                            	0	CA	

@@ -1,0 +1,172 @@
+AAS	African American Studies
+AESE	ArchitectureBsdEntrpSystmsEngr
+AIP	Academic Internship Program
+ANAR	Anthropological Archeology
+ANBI	Anthro/Biological Anthropology
+ANES	Anesthesiology
+ANSC	Anthropology/Sociocultural
+ANTH	Anthropology
+AUD	Audiology
+AWP	Analytical Writing Program
+BENG	Bioengineering
+BGGN	Biology/Grad/General
+BGRD	Biology/Grad/Research Discussn
+BGSE	Biology/Grad/Seminar
+BIBC	Biology/Biochemistry
+BICD	Biol/Genetics,Cellular&Develop
+BIEB	Biol/Ecology, Behavior, & Evol
+BILD	Biology/Lower Division
+BIMM	Biology/Molec Biol, Microbiol
+BIOM	Biomedical Sciences
+BIPN	Biology/Animal Physiol&Neurosc
+BISP	Biology/Special Studies
+BNFO	Bioinformatics
+CAT	Culture, Art, & Technology
+CENG	Chemical Engineering
+CGS	Critical Gender Studies
+CHEM	Chemistry and Biochemistry
+CHIN	Chinese Studies
+CLIN	Clinical Psychology
+CLRE	Clinical Research
+CMM	Cellular & Molecular Medicine
+COGR	Communication/Graduate
+COGS	Cognitive Science
+COMM	Communication
+CONT	Contemporary Issues
+CSE	Computer Science & Engineering
+DERM	Dermatology
+DOC	Dimensions of Culture
+DSC	Data Science
+DSE	Data Science and Engineering
+DSGN	Design
+ECE	Electrical & Computer Engineer
+ECON	Economics
+EDS	Education Studies
+EMED	Emergency Medicine
+ENG	Engineering
+ENVR	Environmental Studies
+ERC	Eleanor Roosevelt College
+ESYS	Environmental Systems
+ETHN	Ethnic Studies
+EXPR	Exchange Programs
+FILM	Film Studies
+FMPH	Family Med & Public Health
+FPM	Family and Preventive Medicine
+GLBH	Global Health
+GPCO	GPS/Core
+GPEC	GPS/Economics
+GPGN	GPS/General
+GPIM	GPS/International Management
+GPLA	GPS/Language
+GPPA	GPS/Policy Analytics
+GPPS	GPS/Political Science
+HDP	Human Development Program
+HIAF	History of Africa
+HIEA	History of East Asia
+HIEU	History of Europe
+HIGR	History, Graduate
+HILA	History of Latin America
+HILD	History, Lower Division
+HINE	History of the Near East
+HISC	History of Science
+HITO	History Topics
+HIUS	History of the United States
+HLAW	Health Law
+HUM	Humanities
+ICAM	Computing and the Arts
+INTL	International Studies
+JAPN	Japanese Studies
+JUDA	Judaic Studies
+LATI	Latin American Studies
+LAWS	Law and Society
+LHCO	Leadership/Health Care Organiz
+LIAB	Linguistics/Arabic
+LIDS	Linguistics/Directed Stdy
+LIFR	Linguistics/French
+LIGM	Linguistics/German
+LIGN	Linguistics/General
+LIHL	Linguistics/Heritage Languages
+LIIT	Linguistics/Italian
+LIPO	Linguistics/Portuguese
+LISL	Linguistics/Amer Sign Language
+LISP	Linguistics/Spanish
+LTAM	Literature of the Americas
+LTCO	Literature/Comparative
+LTCS	Literature/Cultural Studies
+LTEA	Literatures/East Asian
+LTEN	Literatures in English
+LTEU	Literature/European & Eurasian
+LTFR	Literature/French
+LTGK	Literature/Greek
+LTGM	Literature/German
+LTIT	Literature/Italian
+LTKO	Literature/Korean
+LTLA	Literature/Latin
+LTRU	Literature/Russian
+LTSP	Literature/Spanish
+LTTH	Literature/Theory
+LTWL	Literatures of the World
+LTWR	Literature/Writing
+MAE	Mechanical & Aerospace Engin
+MATH	Mathematics
+MATS	Materials Sci & Engineering
+MBC	MarineBiodiversity&Conservatn
+MCWP	Muir College Writing Program
+MDE	Medical Device Engineering
+MED	Medicine
+MGT	Rady School of Management
+MGTA	RadySchMgt Business Analytics
+MGTF	Rady Sch of Management Finance
+MMW	Making of the Modern World
+MSED	Mathematics & Science Educ
+MUIR	Muir College
+MUS	Music
+NANO	NanoEngineering
+NEU	Neurosciences
+OPTH	Ophthalmology
+ORTH	Orthopaedics
+PATH	Pathology
+PEDS	Pediatrics
+PHAR	Pharmacology
+PHIL	Philosophy
+PHYS	Physics
+POLI	Political Science
+PSY	Psychiatry
+PSYC	Psychology
+RAD	Radiology
+RELI	Religion, Study of
+REV	Revelle College
+RMAS	Radiation Med & Applied Sci
+RMED	Reproductive Medicine
+SE	Structural Engineering
+SIO	Scripps Inst of Oceanography
+SIOB	Scripps Inst of Oceanogr/OBP
+SIOC	Scripps Inst of Oceanogr/COAP
+SIOG	Scripps Inst of Oceanogr/GEO
+SOCE	Soc/Ind Research & Honors Prog
+SOCG	Soc/Graduate
+SOCI	Sociology
+SOMC	School of Medicine Core Crses
+SOMI	Sch of Med Interdisciplinary
+SPPS	Pharmacy
+SURG	Surgery
+SXTH	Sixth College
+TDAC	Theatre / Acting
+TDDE	Theatre / Design
+TDDM	Dance/Dance Making
+TDDR	Theatre / Directing&Stage Mgmt
+TDGE	Theatre / General
+TDGR	Theatre / Graduate
+TDHD	Dance/History
+TDHT	Theatre / History & Theory
+TDMV	Dance/Movement
+TDPR	Theatre Dance/Practicum
+TDPW	Theatre / Playwriting
+TDTR	Dance/Theory
+TMC	Thurgood Marshall College
+TWS	Third World Studies
+USP	Urban Studies & Planning
+VIS	Visual Arts
+WARR	Warren College
+WCWP	Warren College Writing Program
+WES	Wireless Embedded Systems

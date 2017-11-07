@@ -2,7 +2,7 @@
 var exports = module.exports = {};
 
 class BasicClass{
-  constructor(className, sectionCode, meetings){
+  constructor(className, professor, sectionCode, meetings){
     if(className.indexOf(' ') != -1){
       let classParts = className.split(' ');
       className = classParts[0].substring(0,1).toUpperCase() + classParts[0].substring(1).toLowerCase() + ' ' +classParts[1];
@@ -11,6 +11,7 @@ class BasicClass{
     }
 
     this.name = className;
+    this.professor = professor;
     this.sectionCode = sectionCode;
     if(meetings != null){
       this.meetings = meetings;
@@ -90,8 +91,8 @@ exports.Meeting = class Meeting{
 }
 
 exports.Course = class Course extends BasicClass{
-  constructor(className, sectionCode, meetings){
-    super(className, sectionCode, meetings);
+  constructor(className, professor, sectionCode, meetings){
+    super(className, professor, sectionCode, meetings);
     this.discussions = new Array();
   }
 
@@ -101,7 +102,7 @@ exports.Course = class Course extends BasicClass{
 };
 
 exports.Discussion = class Discussion extends BasicClass{
-  constructor(className, sectionCode, meetings){
+  constructor(className, professor, sectionCode, meetings){
     super(className, sectionCode, meetings);
   }
 };

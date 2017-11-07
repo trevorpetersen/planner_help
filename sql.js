@@ -15,6 +15,19 @@ con.connect(function(err) {
   console.log("Connected to mysql!");
 });
 
+exports.getCapes = function(className, professor){
+  return new Promise(function(resolve, reject){
+    let query = "select * from cape_data where course like ? and instructor like ?";
+    con.query(query,["%" + className + "%", "%" + professor + "%"], function (err, result, fields) {
+      if (err){
+        reject(err);
+      }else{
+        resolve(result);
+      }
+    });
+  })
+};
+
 
 exports.getClasses = function(className){
   return new Promise(function(resolve, reject){
@@ -86,6 +99,7 @@ function createClassesFromQueryResults(result){
     let lecture = lectures[i];
 
     let name = lecture['CLASS_NAME'];
+    let professor = lecture['PERSON_FULL_NAME'];
     let sectionCode = lecture['SECT_CODE'];
     let dayCode = lecture['DAY_CODE'];
     let beginH = lecture['BEGIN_HH_TIME'];
@@ -105,7 +119,7 @@ function createClassesFromQueryResults(result){
     }
 
     if(course == null){
-      course = new myClasses.Course(name, sectionCode);
+      course = new myClasses.Course(name, professor, sectionCode);
       courses.push(course);
     }
 
@@ -122,7 +136,7 @@ function createClassesFromQueryResults(result){
       let endH = discussion['END_HH_TIME'];
       let endM = discussion['END_MM_TIME'];
 
-      let myDiscussion  = new myClasses.Course(name, sectionCode);
+      let myDiscussion  = new myClasses.Course(name, professor, sectionCode);
       let meeting = new myClasses.Meeting(dayCode, beginH, beginM, endH, endM);
 
       myDiscussion.addMeeting(meeting);

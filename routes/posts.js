@@ -20,13 +20,27 @@ router.post(GET_CLASS_SUGGESTIONS, function(req, res, next){
   let userText = req.body.userText;
 
   getClassSuggestions(userText).then(function(wordArray){
-    res.statusCode = 200;
-    res.send(JSON.stringify(wordArray));
+    returnJSON(res, wordArray);
   });
 });
 
 router.post(GET_CAPES, function(req, res, next){
-  getCapes(req, res,next);
+  if(incorrectPostData(req.url, req.body)){
+    handleBadPostData(next);
+    return;
+  }
+
+  let className = req.body.classname;
+  let professorName = req.body.professor;
+
+  getCapes(className, professorName)
+  .then(function(capesArray){
+    returnJSON(res, capesArray);
+  })
+
+  .catch(function(){
+    // TODO Handle error while getting capes
+  });
 });
 
 router.post(GET_CLASSES, function(req, res, next){
@@ -36,8 +50,7 @@ router.post(GET_CLASSES, function(req, res, next){
   }
   let className = req.body.classname;
   getClasses(className).then(function(classes){
-    res.statusCode = 200;
-    res.send(JSON.stringify(classes));
+    returnJSON(res, classes)
   })
   .catch(function(error){
     res.statusCode = 500;
@@ -45,16 +58,11 @@ router.post(GET_CLASSES, function(req, res, next){
   });
 });
 
-function getCapes(req, res, next){
-  if(incorrectPostData(req.url, req.body)){
-    handleBadPostData(next);
-    return;
-  }
-
-
-  classname = req.body.classname;
-  professorname = req.body.professor;
-
+function getCapes(className, professorName){
+  return sql.getCapes(className, professorName)
+  .then(function(data){
+    return Promise.resolve(data);
+  })
 }
 
 function getClasses(className){
@@ -100,6 +108,12 @@ function getClassSuggestions(userText){
     console.log(err)
   })
 
+}
+
+function returnJSON(res, data){
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(data));
 }
 
 function handleBadPostData(next){

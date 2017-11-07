@@ -1,15 +1,16 @@
+var user = {};
+user.courses = [];
+
 var currentClasses;
 var displayedClassNum;
 var graphColors = ['blue', 'red', 'green', 'pink', 'orange', 'purple', 'black'];
 
-//TODO Look into displaying bar graph tabs (seems to work on mobile, but not desktop)
+//TODO Handle blank input, input that is not a class
 $(document).ready(function(){
   hideTabs();
 
-  addClassInput('');
-  addClassInput('cse 11');
-  //addClassInput('math 109');
-  //addClassInput('math 20b');
+  addClassInput('math 109');
+  addClassInput('chem 100a');
   //addClassInput('phil 27');
   //addClassInput('phil 28');
 
@@ -151,9 +152,19 @@ function displayResults(){
     let validCombos = generateSchedules(classesArray);
     currentClasses = validCombos;
 
-    classesArray.forEach(x => {
-      x.forEach(y => console.log(y.name + ": " + y.sectionCode));
-    });
+    console.log(classesArray);
+    user.courses = classesArray;
+    for(let i = 0; i < classesArray.length; i++){
+       let course = classesArray[i];
+       let courseObj = {};
+       if(course[0] != null){
+         courseObj.name = course[0].name;
+       }else{
+         courseObj.name = null;
+       }
+       courseObj.sections = course;
+      // user.courses.push(courseObj);
+    }
 
     if(validCombos.length > 0){
       showCalendar();
@@ -166,6 +177,10 @@ function displayResults(){
       document.getElementById("currentCourseNum").innerHTML = displayedClassNum + 1;
       document.getElementById("maxCourseNum").innerHTML = validCombos.length;
     }
+
+    getCapeObjects(classesArray).then(function(obj){
+      obj.forEach(x=> console.log( getCourseWithBestGPA(x.capes)))
+    })
   });
 }
 
@@ -297,20 +312,63 @@ function setTitles(courses, className){
   }
 }
 
+function combineArrays(arrayOfArrays){
+  let returnArray = [];
 
-function getCapes(courses, className){
+  for(let i = 0; i < arrayOfArrays.length; i++){
+    let currentArray = arrayOfArrays[i];
+    for(let j= 0; j < currentArray.length; j++){
+      returnArray.push(currentArray[j]);
+    }
+  }
+  return returnArray;
+}
+
+function removeEmptyArrays(arrayOfArrays){
+  for(let i = 0; i < arrayOfArrays.length; i++){
+    if(arrayOfArrays[i].length == 0){
+      arrayOfArrays.splice(i, 1);
+    }
+  }
+}
+
+function getCapeObjects(classesArrayofArrays){
+  let capePromises = [];
+  for(let i = 0; i < classesArrayofArrays.length; i++){
+    let arrayOfCourses = classesArrayofArrays[i];
+    capePromises.push(getCapes(arrayOfCourses));
+  }
+
+  return Promise.all(capePromises).then(function(arrayOfCapeArrays){
+    let capeObjects = [];
+    for(let i = 0; i < classesArrayofArrays.length; i++){
+      let capeObject = {};
+      capeObject.capes = arrayOfCapeArrays[i];
+      capeObject.course_name = classesArrayofArrays[i][0].name;
+
+      capeObjects.push(capeObject);
+    }
+    return Promise.resolve(capeObjects);
+  });
+}
+
+function getCapes(courses){
   let capesRequests = new Array();
   for( let i = 0; i < courses.length; i ++){
-    capesRequests.push(getCape(courses[i].professor, className));
+    console.log(courses[i].professor, courses[i].name);
+    capesRequests.push(getCape(courses[i].professor, courses[i].name));
   }
-  return Promise.all(capesRequests)
+
+  return Promise.all(capesRequests).then(function(capesArrayofArrays){
+    removeEmptyArrays(capesArrayofArrays);
+    return Promise.resolve(capesArrayofArrays);
+  });
 }
 
 function getClassSuggestions(userText){
   return new Promise(function(resolve, reject){
     $.post("getClassSuggestions",{userText:userText}).then(function(data){
-        let obj = JSON.parse(data);
-        resolve(obj);
+        resolve(data);
       });
   })
 }
@@ -318,8 +376,7 @@ function getClassSuggestions(userText){
 function getCape(professorName, className){
   return new Promise(function(resolve, reject){
     $.post("getCapes",{classname:className, professor:professorName}).then(function(data){
-      let obj = JSON.parse(data);
-      resolve(obj);
+      resolve(data);
     });
   });
 }
@@ -327,8 +384,7 @@ function getCape(professorName, className){
 function getCurrentClasses(className){
   return new Promise(function(resolve, reject){
     $.post("getCurrentClasses",{classname:className}).then(function(data){
-      let obj = JSON.parse(data);
-      resolve(obj);
+      resolve(data);
     })
 
     .catch(function(error){
@@ -357,7 +413,7 @@ function getGPAs(capes){
     let sum = 0;
     let num = 0;
     for(let j = 0; j < capes[i].length; j++){
-      gpa = parseGPA(capes[i][j]["Avg Grade Received"]);
+      gpa = parseGPA(capes[i][j]["avg_grade_expected"]);
       if(! isNaN(gpa)){
         sum += gpa;
         num += 1;
@@ -383,13 +439,15 @@ function parseGPA(gpaString){
 }
 
 function getCourseWithBestGPA(capes){
-  gpas = getGPAs(capes);
+  if(capes.length == 0){
+    return null;
+  }
+  let gpas = getGPAs(capes);
   let maxIndex = getIndexOfMaxGPA(gpas);
 
   let best = new Object();
-  best.professor = capes[maxIndex][0]['Instructor'];
+  best.professor = capes[maxIndex][0]['instructor'];
   best.gpa = gpas[maxIndex];
-  console.log(best);
   return best;
 }
 
