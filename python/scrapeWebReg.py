@@ -16,18 +16,23 @@ def main():
         while('  ' in className):
             className = className.replace('  ', ' ')
         split = className.split(' ')
-        url = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode=FA17&_=1506019673981"
+        url = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode=WI18&_=1510110426749"
         headers = {
-        "Cookie": "Cookie"
+        "Cookie": ""
+        }
         prefix = ''
         for y in range(0,6):
             formatted = url.format(split[0].strip() ,prefix + split[1].strip());
             result = requests.get(formatted, headers=headers)
+            if result.status_code != 200:
+                break
             data = json.loads(result.content)
             if(len(data) > 0):
                 break
             prefix += '+'
 
+        if(len(data) == 0):
+            continue
 
         if(isFirst and len(data) > 0):
             isFirst = False
