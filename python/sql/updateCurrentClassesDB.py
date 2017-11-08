@@ -9,7 +9,7 @@ def main():
     db = MySQLdb.connect(host="localhost",user="root",passwd="password", db="planner")
     cur = db.cursor()
     for c in capes:
-        insert = "INSERT INTO current_classes"
+        insert = "INSERT INTO WI18"
         columns = getColumns(filename)
         values = " VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24})"
 
@@ -26,7 +26,7 @@ def getVal(val, index):
     if(ter == '' or ter == ' ' or ter == '  '):
         ter = 'NULL'
     elif(index == 2 or index == 4 or index == 5 or index == 7 or index == 10 or index == 11 or index == 14 or index == 17 or index == 20 or index == 23):
-        ter = ter 
+        ter = ter
     else:
         ter = '\"' + ter + '\"'
 

@@ -31,7 +31,7 @@ exports.getCapes = function(className, professor){
 
 exports.getClasses = function(className){
   return new Promise(function(resolve, reject){
-    let query = "SELECT * from current_classes where CLASS_NAME LIKE ? and (FK_SPM_SPCL_MTG_CD is NULL)";
+    let query = "SELECT * from WI18 where CLASS_NAME LIKE ? and (FK_SPM_SPCL_MTG_CD is NULL)";
     con.query(query,[className], function (err, result, fields) {
       if (err){
         reject(err);

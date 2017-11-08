@@ -149,6 +149,7 @@ function onSuggestionClicked(clickedElement, searchInput){
 function displayResults(){
   resetCalendar();
   getDataOnAllClasses().then(function(classesArray){
+    removeEmptyArrays(classesArray);
     let validCombos = generateSchedules(classesArray);
     currentClasses = validCombos;
 
@@ -235,8 +236,10 @@ function getDataOnAllClasses(){
   console.log(allClasses);
   for(let i = 0; i < allClasses.length; i++){
     let classInput = allClasses[i];
-    let promise = getDataOnClass(classInput.value);
-    promises.push(promise)
+    if(classInput.value != ''){
+      let promise = getDataOnClass(classInput.value);
+      promises.push(promise)
+    }
   }
   return Promise.all(promises);
 }
@@ -344,7 +347,11 @@ function getCapeObjects(classesArrayofArrays){
     for(let i = 0; i < classesArrayofArrays.length; i++){
       let capeObject = {};
       capeObject.capes = arrayOfCapeArrays[i];
-      capeObject.course_name = classesArrayofArrays[i][0].name;
+      if(classesArrayofArrays[i].length > 0){
+        capeObject.course_name = classesArrayofArrays[i][0].name;
+      }else{
+        capeObject.course_name = null;
+      }
 
       capeObjects.push(capeObject);
     }
