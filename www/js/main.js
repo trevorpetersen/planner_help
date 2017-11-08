@@ -1,11 +1,47 @@
-var user = {};
-user.courses = [];
+class User{
+  constructor(){
+    this.courses = [];
+  }
 
+  getCourseByName(name){
+    for(let i = 0; i < this.courses.length ; i++){
+      if(this.courses[i].name.toLowerCase() == name.toLowerCase()){
+        return this.courses[i];
+      }
+    }
+    return null;
+  }
+}
+
+class Course{
+  constructor(name, sections){
+    if(name != null){
+      this.name = name;
+    }else{
+      this.name = "";
+    }
+    if(sections != null){
+      this.sections = sections;
+    }else{
+      this.sections = [];
+    }
+  }
+
+  getSectionByProfessor(professor){
+    for(let i = 0; i < this.sections.length; i++){
+      if(this.sections[i].professor.toLowerCase() == professor.toLowerCase()){
+        return this.sections[i];
+      }
+    }
+    return null;
+  }
+}
+
+var user = new User();
 var currentClasses;
 var displayedClassNum;
 var graphColors = ['blue', 'red', 'green', 'pink', 'orange', 'purple', 'black'];
 
-//TODO Handle blank input, input that is not a class
 $(document).ready(function(){
   hideTabs();
 
@@ -153,18 +189,15 @@ function displayResults(){
     let validCombos = generateSchedules(classesArray);
     currentClasses = validCombos;
 
-    console.log(classesArray);
-    user.courses = classesArray;
     for(let i = 0; i < classesArray.length; i++){
        let course = classesArray[i];
-       let courseObj = {};
+       let courseObj;
        if(course[0] != null){
-         courseObj.name = course[0].name;
+         courseObj  = new Course(course[0].name, course);
        }else{
-         courseObj.name = null;
+         courseObj  = new Course(null, course);
        }
-       courseObj.sections = course;
-      // user.courses.push(courseObj);
+       user.courses.push(courseObj);
     }
 
     if(validCombos.length > 0){
@@ -179,8 +212,29 @@ function displayResults(){
       document.getElementById("maxCourseNum").innerHTML = validCombos.length;
     }
 
-    getCapeObjects(classesArray).then(function(obj){
-      obj.forEach(x=> console.log( getCourseWithBestGPA(x.capes)))
+    getCapeObjects(classesArray).then(function(objArray){
+      for(let i = 0; i < objArray.length; i++){
+        let obj = objArray[i];
+        let className = obj.courseName;
+        let capes = obj.capes;
+        let courseObject = user.getCourseByName(className);
+        if(courseObject != null){
+          courseObject.allCapes = capes;
+        }
+
+        for(let j = 0; j < capes.length; j++){
+          let capesForSection = capes[j];
+          if(capesForSection.length == 0){
+            continue;
+          }
+          let professorName = capesForSection[0].instructor;
+          let section = courseObject.getSectionByProfessor(professorName);
+          if(section != null){
+            section.capes = capesForSection;
+          }
+        }
+
+      }
     })
   });
 }
@@ -191,7 +245,6 @@ function generateSchedules(classesArray){
     return;
   }
   let combos = cartesian(classesArray);
-  console.log(combos.length);
 
   let validCombos = new Array();
   for(let i = 0; i < combos.length; i++){
@@ -210,7 +263,6 @@ function generateSchedules(classesArray){
       validCombos.push(combo);
     }
   }
-  console.log(validCombos.length);
   return validCombos;
 }
 
@@ -233,7 +285,6 @@ function cartesian(arg) {
 function getDataOnAllClasses(){
   let promises = new Array();
   let allClasses = $('.class-input');
-  console.log(allClasses);
   for(let i = 0; i < allClasses.length; i++){
     let classInput = allClasses[i];
     if(classInput.value != ''){
@@ -348,9 +399,9 @@ function getCapeObjects(classesArrayofArrays){
       let capeObject = {};
       capeObject.capes = arrayOfCapeArrays[i];
       if(classesArrayofArrays[i].length > 0){
-        capeObject.course_name = classesArrayofArrays[i][0].name;
+        capeObject.courseName = classesArrayofArrays[i][0].name;
       }else{
-        capeObject.course_name = null;
+        capeObject.courseName = null;
       }
 
       capeObjects.push(capeObject);
@@ -362,7 +413,6 @@ function getCapeObjects(classesArrayofArrays){
 function getCapes(courses){
   let capesRequests = new Array();
   for( let i = 0; i < courses.length; i ++){
-    console.log(courses[i].professor, courses[i].name);
     capesRequests.push(getCape(courses[i].professor, courses[i].name));
   }
 
