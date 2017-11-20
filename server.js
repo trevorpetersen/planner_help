@@ -14,8 +14,8 @@ var https = require('https');
 var app = express();
 
 var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
+  key: fs.readFileSync('encryption/key.pem'),
+  cert: fs.readFileSync('encryption/cert.pem')
 };
 
 app.use(bodyParser.json());
