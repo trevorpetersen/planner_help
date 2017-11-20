@@ -1,3 +1,8 @@
+/*TODO
+  Make sure that all capes are being gotten
+  Move class definitions to another file
+  Add an empty capes array to sections by defaultnode
+*/
 class User{
   constructor(){
     this.courses = [];
