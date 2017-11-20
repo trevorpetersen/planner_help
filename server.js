@@ -27,7 +27,7 @@ app.use('/', posts);
 app.use(handlePageNotFound);
 app.use(handleError)
 
-https.createServer(options, app).listen(443);
+//https.createServer(options, app).listen(443);
 
 app.listen(80, function(){
   console.log("Server is running on port 80");
