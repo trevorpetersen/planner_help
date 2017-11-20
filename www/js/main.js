@@ -1,46 +1,6 @@
 /*TODO
   Make sure that all capes are being gotten
-  Move class definitions to another file
-  Add an empty capes array to sections by defaultnode
 */
-class User{
-  constructor(){
-    this.courses = [];
-  }
-
-  getCourseByName(name){
-    for(let i = 0; i < this.courses.length ; i++){
-      if(this.courses[i].name.toLowerCase() == name.toLowerCase()){
-        return this.courses[i];
-      }
-    }
-    return null;
-  }
-}
-
-class Course{
-  constructor(name, sections){
-    if(name != null){
-      this.name = name;
-    }else{
-      this.name = "";
-    }
-    if(sections != null){
-      this.sections = sections;
-    }else{
-      this.sections = [];
-    }
-  }
-
-  getSectionByProfessor(professor){
-    for(let i = 0; i < this.sections.length; i++){
-      if(this.sections[i].professor.toLowerCase() == professor.toLowerCase()){
-        return this.sections[i];
-      }
-    }
-    return null;
-  }
-}
 
 var user = new User();
 var currentClasses;
@@ -57,7 +17,7 @@ $(document).ready(function(){
 
   hideCalendar();
   createCalendar();
-  createBarGraph("Createive title",["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],[12, 19, 3, 5, 2, 3]);
+  //createBarGraph("Createive title",["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],[12, 19, 3, 5, 2, 3]);
 
   showTab('GEN-data');
 });
@@ -236,10 +196,26 @@ function displayResults(){
           let section = courseObject.getSectionByProfessor(professorName);
           if(section != null){
             section.capes = capesForSection;
+            section.averageGrade = getAverageGPA(capesForSection);
+
           }
         }
 
       }
+      for(let i = 0; i < user.courses.length; i++){
+        let currentCourse = user.courses[i];
+        for(let j = 0; j < currentCourse.sections.length; j++){
+          let currentSection = currentCourse.sections[j];
+          if(currentSection.capes == undefined){
+            currentSection.capes = [];
+          }
+          if(currentSection.averageGrade == undefined){
+            currentSection.averageGrade = 0;
+          }
+        }
+      }
+
+      createGraph(user.courses);
     })
   });
 }
@@ -472,22 +448,26 @@ function getIndexOfMaxGPA(gpas){
 function getGPAs(capes){
   gpas = new Array();
   for(let i = 0; i < capes.length; i++){
-    let sum = 0;
-    let num = 0;
-    for(let j = 0; j < capes[i].length; j++){
-      gpa = parseGPA(capes[i][j]["avg_grade_expected"]);
-      if(! isNaN(gpa)){
-        sum += gpa;
-        num += 1;
-      }
-    }
-    if(num != 0){
-      gpas.push((sum/num));
-    }else{
-      gpas.push(0);
-    }
+    gpas.push(getAverageGPA(capes[i]))
   }
   return gpas;
+}
+
+function getAverageGPA(capesArray){
+  let sum = 0;
+  let num = 0;
+  for(let i = 0; i < capesArray.length; i++){
+    gpa = parseGPA(capesArray[i]["avg_grade_received"]);
+    if(! isNaN(gpa)){
+      sum += gpa;
+      num += 1;
+    }
+  }
+  if(num != 0){
+    return (sum/num).toFixed(2);
+  }else{
+    return 0;
+  }
 }
 
 function parseGPA(gpaString){

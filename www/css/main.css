@@ -3,6 +3,7 @@ body{
   width: 100%;
   padding-left: 5%;
   padding-right: 5%;
+  overflow: scroll;
 }
 
 #content-holder{
@@ -96,6 +97,10 @@ body{
 
 #calendar-controls span,p{
   display: inline-block;
+}
+
+#graph-container{
+    overflow: scroll;
 }
 
 /*************** Cal **********************/
