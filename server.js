@@ -14,8 +14,8 @@ var https = require('https');
 var app = express();
 
 var options = {
-  key: fs.readFileSync('encryption/key.pem'),
-  cert: fs.readFileSync('encryption/cert.pem')
+  key: fs.readFileSync( __dirname + '/encryption/key.pem'),
+  cert: fs.readFileSync( __dirname + '/encryption/cert.pem')
 };
 
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ app.use('/', posts);
 app.use(handlePageNotFound);
 app.use(handleError)
 
-//https.createServer(options, app).listen(443);
+https.createServer(options, app).listen(443);
 
 app.listen(80, function(){
   console.log("Server is running on port 80");
