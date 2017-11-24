@@ -39,6 +39,7 @@ function createCalendar(){
 
       let backgroundDiv = document.createElement('div');
       backgroundDiv.classList.add('background-div');
+      backgroundDiv.classList.add('styled-box');
       backgroundDiv.id =  dayString[j] + i;
       dayHour.append(backgroundDiv);
     }
@@ -147,6 +148,7 @@ function resizeCalender(){
 }
 
 function highlightClasses(classes){
+  console.log(classes);
   for(let i = 0; i < classes.length; i++){
     let currentClass = classes[i];
     highlightMeetings(currentClass);
@@ -205,9 +207,10 @@ function highlightRange(day, beginH, beginM, endH, endM, color, currentClass){
 
 function highlightSlot(id, top, height,color, currentClass){
   let row = document.getElementById(id).parentNode.parentNode;
+  let classID = user.getCourseByName(currentClass.name).id;
   row.classList.add('selected-row');
   let slot = document.getElementById(id);
-  slot.classList.add('selected-' + color);
+  slot.classList.add('selected-color-' + classID);
   slot.style.height = height + "px";
   slot.style.top = top + "px";
   if(currentClass != null){
@@ -236,4 +239,8 @@ function highlightSlot(id, top, height,color, currentClass){
 
     slot.appendChild(infoHolder);
   }
+}
+
+function showNoCalenderResults(){
+  alert("No courses without overlapping class times");
 }

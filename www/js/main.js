@@ -17,7 +17,6 @@ $(document).ready(function(){
 
   hideCalendar();
   createCalendar();
-  //createBarGraph("Createive title",["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],[12, 19, 3, 5, 2, 3]);
 
   showTab('GEN-data');
 });
@@ -149,18 +148,20 @@ function onSuggestionClicked(clickedElement, searchInput){
 
 function displayResults(){
   resetCalendar();
+  resetGraph();
   getDataOnAllClasses().then(function(classesArray){
     removeEmptyArrays(classesArray);
     let validCombos = generateSchedules(classesArray);
     currentClasses = validCombos;
 
+    user.courses = [];
     for(let i = 0; i < classesArray.length; i++){
        let course = classesArray[i];
        let courseObj;
        if(course[0] != null){
-         courseObj  = new Course(course[0].name, course);
+         courseObj  = new Course(course[0].name, course, i+1);
        }else{
-         courseObj  = new Course(null, course);
+         courseObj  = new Course(null, course, i+1);
        }
        user.courses.push(courseObj);
     }
@@ -175,6 +176,8 @@ function displayResults(){
       highlightClasses(combo);
       document.getElementById("currentCourseNum").innerHTML = displayedClassNum + 1;
       document.getElementById("maxCourseNum").innerHTML = validCombos.length;
+    }else{
+      showNoCalenderResults();
     }
 
     getCapeObjects(classesArray).then(function(objArray){
@@ -471,6 +474,10 @@ function getAverageGPA(capesArray){
 }
 
 function parseGPA(gpaString){
+  if(gpaString == null){
+    return NaN;
+  }
+
   if(! gpaString.includes("(")){
     return parseFloat(gpaString);
   }else{
@@ -491,6 +498,32 @@ function getCourseWithBestGPA(capes){
   best.professor = capes[maxIndex][0]['instructor'];
   best.gpa = gpas[maxIndex];
   return best;
+}
+
+function GPAToLetterGrade(gpa){
+  if(gpa == 0){
+    return "N/A";
+  }else if(gpa < 1.67){
+    return "F";
+  }else if(gpa < 2.00){
+    return "C-"
+  }else if(gpa < 2.33){
+    return "C"
+  }else if(gpa < 2.67){
+    return "C+"
+  }else if(gpa < 3.00){
+    return "B-"
+  }else if(gpa < 3.33){
+    return "B"
+  }else if(gpa < 3.67){
+    return "B+"
+  }else if(gpa < 4.00){
+    return "A-"
+  }else if(gpa == 4.00){
+    return "A"
+  }else{
+    return "";
+  }
 }
 
 function overlaps(course1, course2){

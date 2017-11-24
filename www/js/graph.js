@@ -1,17 +1,26 @@
 function createGraph(courses){
-  for(let i = 0; i < courses.length; i++){
-    createBar(courses[i].sections);
+  if(courses.length > 0){
+    createBars(courses[0]);
+    setControls(courses);
+  }else{
+    // TODO There are not courses
   }
 }
 
-function createBar(sectionArray){
+function setGraph(course){
+  clearBars();
+  createBars(course);
+}
+
+function createBars(course){
+
+  let sectionArray = course.sections;
   let graphContainer = document.getElementById("graph-container");
 
   sectionArray.sort(function(a,b){return b.averageGrade - a.averageGrade});
-  console.log(sectionArray);
 
   for(let i = 0; i < sectionArray.length; i++){
-    let bar1 = document.createElement("div");
+    let bar = document.createElement("div");
     let currentSection = sectionArray[i];
 
     let width;
@@ -19,20 +28,55 @@ function createBar(sectionArray){
       width = (currentSection.averageGrade / 4) * 100;
     }else{
       width = 100;
-      $(bar1).css("background-color", "gray");
-      $(bar1).css("opacity", .5);
-      $(bar1).css("border", "gray");
+      $(bar).css("opacity", .5);
     }
 
-    bar1.classList.add("bar");
-    bar1.innerHTML = currentSection.professor + ":" + currentSection.averageGrade;
-    $(bar1).css("width", width + "%");
+    let avgGrade = currentSection.averageGrade;
+    bar.classList.add("bar");
+    bar.classList.add("styled-box");
+    bar.classList.add("selected-color-" + course.id);
 
-    graphContainer.appendChild(bar1);
+    let classInfo = currentSection.name + "</br>";
+    let gpaInfo = currentSection.professor + ": " + avgGrade + " (" + GPAToLetterGrade(avgGrade) + ")";
+    let info = classInfo + gpaInfo;
+
+    bar.innerHTML = info;
+    $(bar).css("width", width + "%");
+    graphContainer.appendChild(bar);
 
   }
+}
 
+function setControls(courses){
+  for(let i = 0; i < courses.length; i++){
+    let course = courses[i];
+    let button = document.createElement("button");
+    let color = user.getColorByID(course.id);
 
+    $(button).css("border", "solid 1px " + color);
+    $(button).css("color", "black");
+    $(button).css("borderRadius", "3px");
+    $(button).css("backgroundColor", color);
+    $(button).css("margin-left", "5px");
 
+    button.onclick = function(){
+      setGraph(course);
+    }
+    button.innerHTML = course.name;
 
+    document.getElementById('graph-controls').appendChild(button);
+  }
+}
+
+function clearBars(){
+  $('#graph-container').empty();
+}
+
+function clearControls(){
+  $('#graph-controls').empty();
+}
+
+function resetGraph(){
+  clearBars();
+  clearControls();
 }

@@ -105,11 +105,11 @@ body{
 
 /*************** Cal **********************/
 
-#cal-container{
+.tab-data{
   margin-top: 50px;
 }
 @media only screen and (max-width: 900px) {
-  #cal-container{
+  .tab-data{
     margin-top: 0;
   }
 }
@@ -150,11 +150,13 @@ height: 45px;
 .inner{
   border: #bdc3c7 solid 1px;
 }
+.styled-box{
+  box-shadow: 3px 3px grey;
+}
 
 .background-div{
   width: 100%;
   position: absolute;
-  box-shadow: 3px 3px grey;
 }
 @media only screen and (max-width: 900px) {
   .background-div{
