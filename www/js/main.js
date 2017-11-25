@@ -6,6 +6,7 @@ var user = new User();
 var currentClasses;
 var displayedClassNum;
 var graphColors = ['blue', 'red', 'green', 'pink', 'orange', 'purple', 'black'];
+var isLoading = false;
 
 $(document).ready(function(){
   hideTabs();
@@ -148,6 +149,10 @@ function onSuggestionClicked(clickedElement, searchInput){
 }
 
 function displayResults(){
+  if(isLoading){
+    return;
+  }
+  isLoading = true;
   resetCalendar();
   resetGraph();
   getDataOnAllClasses().then(function(classesArray){
@@ -220,6 +225,7 @@ function displayResults(){
       }
 
       createGraph(user.courses);
+      isLoading = false;
     })
   });
 }
