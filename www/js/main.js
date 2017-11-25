@@ -119,7 +119,7 @@ function createClassInput(val){
         let suggestionItem = document.createElement("p");
         suggestionItem.innerHTML = word;
         $(suggestionItem).addClass("search_suggestion_item");
-        $(suggestionItem).click(function(){
+        $(suggestionItem).mousedown(function(){
           onSuggestionClicked(this, e.target)
         });
 
@@ -144,6 +144,7 @@ function createClassInput(val){
 
 function onSuggestionClicked(clickedElement, searchInput){
   searchInput.value = clickedElement.innerHTML;
+  $(clickedElement.parentNode).hide();
 }
 
 function displayResults(){
@@ -310,13 +311,12 @@ function getDataOnClass(className){
 }
 
 function switchTab(obj){
+  $("#navbar a").removeClass("selected-nav");
+  $(obj).addClass("selected-nav");
   switch (obj.id) {
     case 'GEN':
-      hideTabs();
-      showTab(obj.id + '-data');
-      break;
-
     case 'GPA':
+
       hideTabs();
       showTab(obj.id + '-data');
       break;
@@ -328,7 +328,9 @@ function hideTabs(){
 }
 
 function showTab(id){
-  $('#' + id).show();
+  let tab = document.getElementById(id);
+  $(tab).show();
+
 }
 
 function bundleCoursesAndCapes(courses, capes){

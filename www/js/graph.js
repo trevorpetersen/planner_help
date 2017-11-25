@@ -52,6 +52,7 @@ function setControls(courses){
     let course = courses[i];
     let button = document.createElement("button");
     let color = user.getColorByID(course.id);
+    button.classList.add("graph-button");
 
     $(button).css("border", "solid 1px " + color);
     $(button).css("color", "black");
@@ -59,7 +60,13 @@ function setControls(courses){
     $(button).css("backgroundColor", color);
     $(button).css("margin-left", "5px");
 
+    if(i == 0){
+      $(button).css("opacity","1")
+    }
+
     button.onclick = function(){
+      $(".graph-button").css("opacity","")
+      $(this).css("opacity","1")
       setGraph(course);
     }
     button.innerHTML = course.name;

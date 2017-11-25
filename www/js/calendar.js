@@ -83,7 +83,7 @@ function resetCalendar(){
   $('.background-div').css('height', '0px');
   colorIndex = 0;
   for(let i = 0; i < colors.length; i++){
-    $(".selected-" + colors[i]).removeClass('selected-' + colors[i]);
+    $("#cal .selected-" + colors[i]).removeClass('selected-' + colors[i]);
   }
 
   let calendar = document.getElementById('cal');
@@ -148,7 +148,6 @@ function resizeCalender(){
 }
 
 function highlightClasses(classes){
-  console.log(classes);
   for(let i = 0; i < classes.length; i++){
     let currentClass = classes[i];
     highlightMeetings(currentClass);
@@ -182,30 +181,31 @@ function highlightRange(day, beginH, beginM, endH, endM, color, currentClass){
     let topVal = (beginM / 60) * calendarDayHeight;
     let height = calendarDayHeight - topVal;
     if(isFirst){
-      highlightSlot(day + hour, topVal, height, color, currentClass);
+      highlightSlot(day + hour, topVal, height, color, currentClass, true);
       isFirst = false;
     }else{
-      highlightSlot(day + hour, topVal, height, color);
+      highlightSlot(day + hour, topVal, height, color, currentClass, false);
     }
     hour++;
     beginM = 0;
   }
+
   if(beginM != endM){
     //let topVal = 2 * beginM;
     let topVal = (beginM / 60) * calendarDayHeight;
 
     let height = calendarDayHeight - topVal - (((60 - endM) / 60) * calendarDayHeight);
     if(isFirst){
-      highlightSlot(day + hour, topVal, height,color, currentClass);
+      highlightSlot(day + hour, topVal, height,color, currentClass, true);
       isFirst = false;
     }else{
-      highlightSlot(day + hour, topVal, height, color, currentClass);
+      highlightSlot(day + hour, topVal, height, color, currentClass, false);
     }
   }
 
 }
 
-function highlightSlot(id, top, height,color, currentClass){
+function highlightSlot(id, top, height,color, currentClass, showName){
   let row = document.getElementById(id).parentNode.parentNode;
   let classID = user.getCourseByName(currentClass.name).id;
   row.classList.add('selected-row');
@@ -213,7 +213,7 @@ function highlightSlot(id, top, height,color, currentClass){
   slot.classList.add('selected-color-' + classID);
   slot.style.height = height + "px";
   slot.style.top = top + "px";
-  if(currentClass != null){
+  if(showName){
     let className = currentClass.name;
     let sectionCode = currentClass.sectionCode;
 

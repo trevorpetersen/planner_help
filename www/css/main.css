@@ -154,6 +154,10 @@ height: 45px;
   box-shadow: 3px 3px grey;
 }
 
+.selected-nav{
+  border-bottom: solid 1px #007bff;
+}
+
 .background-div{
   width: 100%;
   position: absolute;
