@@ -199,7 +199,7 @@ function highlightRange(day, beginH, beginM, endH, endM, color, currentClass){
       highlightSlot(day + hour, topVal, height,color, currentClass);
       isFirst = false;
     }else{
-      highlightSlot(day + hour, topVal, height, color);
+      highlightSlot(day + hour, topVal, height, color, currentClass);
     }
   }
 

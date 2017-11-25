@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   addClassInput('math 109');
   addClassInput('chem 100a');
-  //addClassInput('phil 27');
+  addClassInput('cse 100');
   //addClassInput('phil 28');
 
   hideCalendar();
