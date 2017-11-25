@@ -1,4 +1,5 @@
 *.swp
+todo
 node_modules
 config.js
 scripts/last_updated
