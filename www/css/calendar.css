@@ -1,0 +1,96 @@
+#cal{
+width: 100%;
+height: 100%;
+text-align: center;
+overflow: auto;
+}
+
+#cal-container{
+height: 85%;
+width: 100%;
+}
+
+.time{
+font-size: 15px;
+color: #gray
+}
+@media only screen and (max-width: 900px) {
+  .time{
+    padding: 0;
+  }
+}
+
+#calendar-controls{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#calendar-controls span,p{
+  display: inline-block;
+}
+
+.inner{
+padding-left: 0px;
+padding-right: 0px;
+height: 45px;
+border: #bdc3c7 solid 1px;
+}
+
+
+.background-div{
+  width: 100%;
+  position: absolute;
+}
+@media only screen and (max-width: 900px) {
+  .background-div{
+    width: 100%;
+    position: absolute;
+  }
+}
+
+.calendar-break{
+  visibility: hidden;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+@media only screen and (max-width: 900px) {
+  .calendar-break{
+    display: none;
+  }
+}
+
+.class-info{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 5;
+  font-family: fantasy;
+  color: #2c3e50;
+  cursor: default;
+}
+
+.calendar-text-small{
+  font-size: 10px;
+  visibility: visible;
+}
+
+.time-long{
+  display: block;
+}
+@media only screen and (max-width: 900px) {
+  .time-long{
+    display: none;
+  }
+}
+
+.time-short{
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  .time-short{
+    display: block;
+  }
+}

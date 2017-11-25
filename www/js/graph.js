@@ -60,6 +60,7 @@ function setControls(courses){
     $(button).css("backgroundColor", color);
     $(button).css("margin-left", "5px");
 
+    //Select the first button
     if(i == 0){
       $(button).css("opacity","1")
     }

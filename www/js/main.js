@@ -19,7 +19,7 @@ $(document).ready(function(){
   hideCalendar();
   createCalendar();
 
-  showTab('GEN-data');
+  showTab('SCH-data');
 });
 
 function createBarGraph(title, labels, data){
@@ -320,7 +320,7 @@ function switchTab(obj){
   $("#navbar a").removeClass("selected-nav");
   $(obj).addClass("selected-nav");
   switch (obj.id) {
-    case 'GEN':
+    case 'SCH':
     case 'GPA':
 
       hideTabs();

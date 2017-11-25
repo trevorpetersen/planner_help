@@ -11,6 +11,7 @@
 
 
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="css/calendar.css" rel="stylesheet" type="text/css"/>
   <link href="css/graph.css" rel="stylesheet" type="text/css"/>
   <link href="css/main.css" rel="stylesheet" type="text/css"/>
 
@@ -26,7 +27,7 @@
     <div id="navbar">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link selected-nav" id="GEN" onclick="switchTab(this)" href="#" >Generate</a>
+          <a class="nav-link selected-nav" id="SCH" onclick="switchTab(this)" href="#" >Schedules</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="GPA" onclick="switchTab(this)" href="#">GPA</a>
@@ -42,7 +43,7 @@
       <div id='input-holder'>
         <div class="controls">
           <button onclick="addClassInput('')" class="btn btn-outline-primary">Add Class</button>
-          <button onclick="displayResults()" class="btn btn-outline-primary">Create Schedules</button>
+          <button onclick="displayResults()" class="btn btn-outline-primary">Update</button>
         </div>
 
         <div id="class-input-holder"></div>
@@ -51,7 +52,7 @@
       </div>
 
 
-      <div id="GEN-data" class="tab-data">
+      <div id="SCH-data" class="tab-data">
 
           <div id="cal-container">
             <div class="card">

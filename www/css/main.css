@@ -11,13 +11,14 @@ body{
 }
 
 .tab-data{
+  margin-top: 50px;
   width: 100%;
 }
 @media only screen and (max-width: 900px) {
   .tab-data{
     display: block;
     float: left;
-    margin-top: 100px;
+    margin-top: 25px;
   }
 }
 
@@ -36,6 +37,7 @@ body{
 @media only screen and (max-width: 900px) {
   .input-container{
     padding-top: 20px;
+    padding-right: 0px;
     display: block;
     width: 100%;
   }
@@ -84,72 +86,15 @@ body{
   color: #fff;
 }
 
-#calendar-controls{
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .controls{
   margin-top: 20px;
   height: 10%;
-}
-
-#calendar-controls span,p{
-  display: inline-block;
-}
-
-#graph-container{
-    overflow: scroll;
-}
-
-/*************** Cal **********************/
-
-.tab-data{
-  margin-top: 50px;
-}
-@media only screen and (max-width: 900px) {
-  .tab-data{
-    margin-top: 0;
-  }
 }
 
 .header{
 text-align: center;
 }
 
-#cal{
-width: 100%;
-height: 100%;
-text-align: center;
-overflow: auto;
-}
-
-#cal-container{
-height: 85%;
-width: 100%;
-}
-
-.time{
-font-size: 15px;
-color: #gray
-}
-@media only screen and (max-width: 900px) {
-  .time{
-    padding: 0;
-  }
-}
-
-
-.inner{
-padding-left: 0px;
-padding-right: 0px;
-height: 45px;
-}
-
-.inner{
-  border: #bdc3c7 solid 1px;
-}
 .styled-box{
   box-shadow: 3px 3px grey;
 }
@@ -158,70 +103,9 @@ height: 45px;
   border-bottom: solid 1px #007bff;
 }
 
-.background-div{
-  width: 100%;
-  position: absolute;
-}
-@media only screen and (max-width: 900px) {
-  .background-div{
-    width: 100%;
-    position: absolute;
-  }
-}
-
-.calendar-break{
-  visibility: hidden;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-@media only screen and (max-width: 900px) {
-  .calendar-break{
-    display: none;
-  }
-}
-
-.class-info{
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  position: relative;
-  z-index: 5;
-  font-family: fantasy;
-  color: #2c3e50;
-  cursor: default;
-}
-
-.calendar-text-small{
-  font-size: 10px;
-  visibility: visible;
-}
-
-.time-long{
-  display: block;
-}
-@media only screen and (max-width: 900px) {
-  .time-long{
-    display: none;
-  }
-}
-
-.time-short{
-  display: none;
-}
-@media only screen and (max-width: 900px) {
-  .time-short{
-    display: block;
-  }
-}
 
 
 
-
-
-
-
-/***************************************/
 
 
 .selected-color-1{
