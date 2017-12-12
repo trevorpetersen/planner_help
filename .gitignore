@@ -1,6 +1,8 @@
+*.pyc
 *.swp
 todo
 node_modules
 config.js
 scripts/last_updated
 encryption/
+python/data

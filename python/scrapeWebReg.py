@@ -1,3 +1,4 @@
+import utility
 import sys
 import requests
 import json
@@ -153,4 +154,5 @@ def printVal(obj, val):
         sys.stdout.flush()
 
 
-main()
+if __name__ == "__main__":
+    main()

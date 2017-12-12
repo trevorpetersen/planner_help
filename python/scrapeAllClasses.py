@@ -1,22 +1,39 @@
+import utility
+import time
 import sys
 import requests
 import json
-import csv
 from bs4 import BeautifulSoup
 
 def main():
-    checkInput();
+    utility.checkInput(2, ['departments', 'outputFile']);
 
     filename = sys.argv[1]
-    departments = getDepartmentsFromFile(filename)
+    outputFileName = sys.argv[2]
+
+    departments = utility.openFile(filename,'\t')
+
+    outputFile = open(outputFileName, 'w')
     seen = {}
 
     for i in range(0, len(departments)):
-        url = 'http://courses.ucsd.edu/courseList.aspx?name='
-        url = url + departments[i]
+        departCode = departments[i][0]
+        url = utility.CLASSES_URL + departCode + '.html'
+        time.sleep(0.1)
         result = requests.get(url)
         soup = BeautifulSoup(result.content, "lxml")
+
+        courses = soup.findAll("p", { "class" : "course-name" })
+
+        for course in courses :
+            name = course.text.split('.')[0].encode('utf-8').strip()
+            name = clean(name)
+            outputFile.write(name +  '\n')
+        continue
+        sys.exit()
+
         table = soup.table
+
         if(table == None):
             continue
         classes = table.findAll('li')
@@ -30,21 +47,19 @@ def main():
                 print(courseCode + "\t" + courseName)
                 seen[courseCode] = courseCode + "\t" + courseName
 
+def clean(text):
+    while "  " in text:
+        text = text.replace("  ", " ")
+    while "\t\t" in text:
+        text = text.replace("\t\t", "\t")
+    while "\n" in text:
+        text = text.replace("\n", "")
 
+    text = text.replace("\t ", "\t")
+    if '/' in text:
+        text = text.split('/')[0]
 
-def checkInput():
-    if len(sys.argv) != 2:
-        print("Please provide a file")
-        sys.exit(1)
+    return text
 
-def getDepartmentsFromFile(filename):
-    departments = []
-    with open(filename, 'rb') as csvfile:
-        reader = csv.reader(csvfile, delimiter= '\t')
-        for row in reader:
-            departments.append(row[0])
-
-    return departments
-
-
-main()
+if __name__ == "__main__":
+    main()

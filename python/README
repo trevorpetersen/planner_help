@@ -1,0 +1,46 @@
+Instructions:
+
+  First make sure that you have the required dependencies. Use requirements.txt
+  to install these libraries: requests, BeautifulSoup. Use the following
+  command:
+
+  pip install -r requirements.txt
+
+
+  One you have all the required libraries installed follow these steps:
+
+  1. Scrape departments
+  2. Scape classes using previously scraped departments
+  3. Scrape WebReg using previously scraped classes
+
+    1. Use scrapeDepartments to scrape departments. This program will output a
+    text file of all the department codes and names at UCSD. Specify the output
+    file as the first parameter.
+
+    Usage: python scrapeDepartments.py [outputFile]
+    Ex:  python scrapeDepartments.py departments.txt
+
+    2. You can scrape either a list of all classes (includes classes that are
+    not offered this quarter) or just classes offered this quarter. To to do
+    either, you will need a tab delimited list of all the departments that
+    you wish to get classes from (This is obtained in step 1). The output is a
+    tab delimited list of classes for all the given departments.
+
+    All classes:
+      Usage: python scrapeAllClasses.py [departmentFileName] [outputFileName]
+      Ex: scrapeAllClasses.py departments.txt classes.txt
+
+    Current classes:
+      Usage: python scrapeCoursesFromWebReg.py [departmentFileName] [outputFileName] [QuarterCode] [WebRegCookie]
+      Ex: python scrapeCoursesFromWebReg.py departments.txt classes.txt WI18 [Your cookie]
+
+      Note: Quarter codes are the quarter (FA, WI, SP) followed by year.
+        Ex: FA16 or SP19
+          
+        SU = Summer Med School
+        S1 = Summer Session I
+        S2 = Summer Session II
+        S3 = Special Summer Session
+        FA = Fall Quarter
+        WI = Winter Quarter
+        SP = Spring Quarter
