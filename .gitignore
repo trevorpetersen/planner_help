@@ -6,3 +6,4 @@ config.js
 scripts/last_updated
 encryption/
 python/data
+python/cred.py
