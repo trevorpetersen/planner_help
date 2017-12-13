@@ -9,7 +9,7 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 def main():
 
-    utility.checkInput(1,["[outputFile]"])
+    utility.checkInput(1,["outputFile"],[])
     outputFilename = sys.argv[1]
     scrapeDepartments(outputFilename)
 
@@ -44,6 +44,8 @@ def printDepartData(departData, filename):
 
     for depart in departData:
         outputFile.write(depart[0] + "\t" + depart[1] + '\n')
+        
+    outputFile.close()
 
 
 

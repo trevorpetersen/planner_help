@@ -1,5 +1,6 @@
 import utility
 import getAvailableQuarters
+import cred
 
 import sys
 import requests
@@ -9,11 +10,16 @@ import csv
 from bs4 import BeautifulSoup
 
 def main():
-    print(getCookie())
+    print(getCookieWithPrompt())
 
-def getCookie():
+def getCookieWithPrompt():
     username = raw_input("Username: ")
     password = getpass.getpass("Password: ")
+    session = requests.Session()
+    navigateToLogin(session)
+    return login(session, username, password)
+
+def getCookie(username, password):
     session = requests.Session()
     navigateToLogin(session)
     return login(session, username, password)

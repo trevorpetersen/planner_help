@@ -1,4 +1,6 @@
 import utility
+import cred
+
 import sys
 import requests
 import json
@@ -6,15 +8,17 @@ import csv
 from bs4 import BeautifulSoup
 
 def main():
-    utility.checkInput(4, ["departments", "ouputFile", "QuarterCode", "WebRegCookie"])
+    utility.checkInput(3, ["departmentsFile", "outputFile", "QuarterCode"],[])
+    utility.checkCred()
+
     departmentsFileName = sys.argv[1]
     outputFileName = sys.argv[2]
     quarterCode = sys.argv[3]
-    cookie = sys.argv[4]
+    cookie = utility.getCookie()
 
     departData = utility.openFile(departmentsFileName, '\t')
 
-    scrapeCoursesFromWebreg(departData, outputFileName, quarterCode, cookie)
+    scrapeCoursesFromWebReg(departData, outputFileName, quarterCode, cookie)
 
 
 def scrapeCoursesFromWebReg(departData, outputName, quarterCode, cookie):
@@ -44,8 +48,9 @@ def printCourseData(courseData, filename):
     outputFile = open(filename, 'w')
 
     for course in courseData:
-        outputFile.write(course[0] + "\t" + course[1] + '\n')
+        outputFile.write(course[0].strip() + " " + course[1].strip() + '\n')
 
+    outputFile.close()
 
 if __name__ == "__main__":
     main()

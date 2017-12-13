@@ -1,4 +1,4 @@
-Instructions:
+Setup:
 
   First make sure that you have the required dependencies. Use requirements.txt
   to install these libraries: requests, BeautifulSoup. Use the following
@@ -6,37 +6,99 @@ Instructions:
 
   pip install -r requirements.txt
 
+  * Note: Some of the scripts require a valid WebReg cookie to use. If you wish
+  to use one of these functions, open cred.py and add a username/password or
+  add a cookie by copying and pasting the output of cookieHelper.py
 
-  One you have all the required libraries installed follow these steps:
+Examples:
 
-  1. Scrape departments
-  2. Scape classes using previously scraped departments
-  3. Scrape WebReg using previously scraped classes
+  Save the list of all departments at UCSD to a file named "departs.txt"
+    python scrapeDepartments.py departs.txt
 
-    1. Use scrapeDepartments to scrape departments. This program will output a
-    text file of all the department codes and names at UCSD. Specify the output
-    file as the first parameter.
+  Save a list of all courses using departs.txt to a file named "courses.txt"
+    python scrapeAllCourses.py departs.txt courses.txt
 
-    Usage: python scrapeDepartments.py [outputFile]
-    Ex:  python scrapeDepartments.py departments.txt
+  Scrape the list of classes from Winter 2018 from WebReg (you must have already
+  added credentials to cred.py) to a file named "currentCourses.txt"
+    python scrape.py currentCourses.txt WI18
 
-    2. You can scrape either a list of all classes (includes classes that are
-    not offered this quarter) or just classes offered this quarter. To to do
-    either, you will need a tab delimited list of all the departments that
-    you wish to get classes from (This is obtained in step 1). The output is a
-    tab delimited list of classes for all the given departments.
 
-    All classes:
-      Usage: python scrapeAllClasses.py [departmentFileName] [outputFileName]
-      Ex: scrapeAllClasses.py departments.txt classes.txt
+Uses:
 
-    Current classes:
-      Usage: python scrapeCoursesFromWebReg.py [departmentFileName] [outputFileName] [QuarterCode] [WebRegCookie]
-      Ex: python scrapeCoursesFromWebReg.py departments.txt classes.txt WI18 [Your cookie]
+  This library provides the following scrips:
+
+    * scrapeDepartments.py - save a list of all departments at UCSD to a tab
+      delimited file
+    * scrapeAllCourses.py - save a list of all courses offered at UCSD to a tab
+      delimited file
+    * scrapeCapes.py - save a list of capes to a tab delimited file
+    * cookieHelper.py - gets a cookie using a username and password
+
+
+    *** The following require you to provide credentials ***
+
+    * scrape.py - gets an up to date list of departments and then saves all the
+      current courses from WebReg
+    * scrapeCoursesFromWebReg.py - save a list of current courses at UCSD to a
+      tab delimited file
+    * getAvailableQuarters.py - prints a list of terms currently available for
+      scraping (such as WI18 or FA17)
+
+Script Details:
+
+  -- scrape.py --
+    Gets an up to date list of departments and then saves all the current
+    courses from WebReg
+
+      Usage: python scrape.py outputFile quarterCode
+        outputFile - the name of the file to save the departments to
+        quarterCode - the term code of the term to scrape (like WI18)
+
+
+    -- scrapeCoursesFromWebReg.py --
+      Save a list of current courses at UCSD to a tab delimited file
+
+        Usage: python scrapeCoursesFromWebReg.py departmentsFile outputFile QuarterCode
+          departmentsFile - a tab delimited list of departments, where the first
+          entry is the department code
+          outputFile - the name of the file to save the departments to
+          quarterCode - the term code of the term to scrape (like WI18)
+
+
+  --scrapeDepartments.py --
+    Save a list of all departments at UCSD to a tab delimited file
+
+      Usage: python scrapeDepartments.py outputFile
+        outputFile - the name of the file to save the departments to
+
+
+  -- scrapeAllCourses.py --
+  TODO
+
+
+  -- scrapeCapes.py --
+    Given a tab delimited file of courses, save a list of capes to a tab
+    delimited file.
+
+      Usage: python scrapeCapes.py coursesFile outputFile
+        coursesFile - a tab delimited file of courses to get capes for
+        outputFile - the name of the file to save the cape data to
+
+
+  -- cookieHelper.py -- [Requires Credentials]
+    Logs in to WebReg with a username and password and prints the cookie
+    returned by the server
+
+      Usage: python cookieHelper.py
+
+  -- getAvailableQuarters.py -- [Requires Credentials]
+    Prints a list of the terms that can be scraped from WebReg
+
+      Usage: python getAvailableQuarters.py
 
       Note: Quarter codes are the quarter (FA, WI, SP) followed by year.
         Ex: FA16 or SP19
-          
+
         SU = Summer Med School
         S1 = Summer Session I
         S2 = Summer Session II

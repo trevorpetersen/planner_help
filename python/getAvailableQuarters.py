@@ -1,5 +1,6 @@
 import utility
-import getCookie
+import cred
+
 import sys
 import csv
 import requests
@@ -8,18 +9,10 @@ import json
 
 def main():
 
-    argCount = len(sys.argv)
-    if(argCount == 1):
-        cook = getCookie.getCookie();
-        print("Getting cookies ...")
-    elif (argCount == 2):
-        cook = sys.argv[1]
-    else:
-        utility.printUsage([], ["cookie"])
-        sys.exit(1)
+    utility.checkCred()
+    cookie = utility.getCookie()
 
-
-    data = getAvailableQuarters(cook)
+    data = getAvailableQuarters(cookie)
     for term in data:
         print(term["termDesc"] + "\n\t " + "Code: " + str(term["termCode"]))
 

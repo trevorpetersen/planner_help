@@ -1,3 +1,6 @@
+import cred
+import cookieHelper
+
 import sys
 import csv
 import requests
@@ -14,6 +17,22 @@ def checkInput(numFiles, req, opt):
         printUsage(req, opt)
         sys.exit(1)
 
+def checkCred():
+    if(cred.cookie != ''):
+        return
+    if(cred.username != '' and cred.password != ''):
+        return
+
+    print('Error: Please add a username/password or cookie to cred.py and retry\n')
+    sys.exit(1)
+
+def getCookie():
+    checkCred();
+    if(cred.cookie != ''):
+        return cred.cookie
+    else:
+        return cookieHelper.getCookie(cred.username, cred.password)
+
 def printUsage(required, optional=[]):
     outputText = ''
 
@@ -23,7 +42,7 @@ def printUsage(required, optional=[]):
     for opt in optional:
         outputText += ' [' + opt + ']'
 
-    print("Usage: " + sys.argv[0] + outputText)
+    print("Usage: python " + sys.argv[0] + outputText)
 
 
 def openFile(filename, delin):

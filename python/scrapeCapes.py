@@ -1,3 +1,5 @@
+import utility
+
 import sys
 import requests
 import json
@@ -6,13 +8,18 @@ import csv
 from bs4 import BeautifulSoup
 
 def main():
+    utility.checkInput(2, ["coursesFile", "outputFile"], [])
     filename = sys.argv[1]
-    classes = getClassesFromFile(filename)
+    outputFilename = sys.argv[2]
+    classes = utility.openFile(filename, '\t')
+
+    outputFile = open(outputFilename, 'w')
 
     for x in range(0, len(classes)):
-        className = classes[x]
+        className = classes[x][0]
         url = "http://www.cape.ucsd.edu/responses/Results.aspx?Name=&CourseNumber={0}";
         url = url.format(className);
+        print(url)
         headers = {
         "Connection": "keep-alive",
         "Pragma": "no-cache",
@@ -52,22 +59,11 @@ def main():
                 course[columns[y]] = row_data[y].text.strip()
             course_data.append(course)
             for value in course.values():
-                #print(value + "\t")
-                sys.stdout.write(value + "\t")
-            sys.stdout.write("\n")
-            sys.stdout.flush()
+                outputFile.write(value + '\t')
+            outputFile.write("\n")
+
+    outputFile.close()
 
 
-
-
-def getClassesFromFile(filename):
-    classes = []
-    with open(filename, 'rb') as csvfile:
-        reader = csv.reader(csvfile, delimiter= '\t')
-        for row in reader:
-            classes.append(row[0])
-
-    return classes
-
-
-main();
+if __name__ == "__main__":
+    main()
