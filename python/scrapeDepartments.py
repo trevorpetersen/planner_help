@@ -22,6 +22,7 @@ def getDepartCodesAndNames():
 
     departData = []
     for i in range (0, len(letters)):
+        utility.updateStatus("Getting departments that start with " + letters[i].upper())
         url = utility.DEPARTMENT_URL + letters[i].upper()
         result = requests.get(url)
         soup = BeautifulSoup(result.content, "lxml")
@@ -37,6 +38,7 @@ def getDepartCodesAndNames():
             departName = departStuff[1].strip()
             departData.append({"DepartCode": departCode, "DepartName":departName})
 
+    sys.stdout.write('\n')
     return departData
 
 if __name__ == "__main__":

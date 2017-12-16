@@ -13,15 +13,25 @@ def main():
 
     filename = sys.argv[1]
     outputFilename = sys.argv[2]
-    classes = utility.processData(filename, '\t')
+    courses = utility.processData(filename, '\t')
 
     cookie = utility.getCookie()
 
-    courseData = []
-    for x in range(0, len(classes)):
+    scrapeWebReg(courses, outputFilename, cookie)
 
-        courseName = classes[x]['SUBJ_CODE'].strip()
-        courseCode = classes[x]['CRSE_CODE'].rstrip().replace(' ', '+');
+def scrapeWebReg(courses, outputFilename, cookie):
+    courseData = getCourseData(courses, cookie)
+    utility.printData(courseData, outputFilename)
+
+
+def getCourseData(courses, cookie):
+    courseData = []
+    for x in range(0, len(courses)):
+
+        courseName = courses[x]['SUBJ_CODE'].strip()
+        courseCode = courses[x]['CRSE_CODE'].rstrip().replace(' ', '+');
+
+        utility.updateStatus("Getting course data for " + courseName + " " + courses[x]['CRSE_CODE'].strip())
 
         headers = {
         "Cookie": cookie
@@ -34,7 +44,8 @@ def main():
         for obj in data:
             courseData.append(obj)
 
-    utility.printData(courseData,outputFilename)
+    sys.stdout.write('\n')
+    return courseData
 
 
 if __name__ == "__main__":

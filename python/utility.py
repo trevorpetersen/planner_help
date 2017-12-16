@@ -72,6 +72,14 @@ def printData(courseData, filename):
         outputFile.write(row + '\n')
     outputFile.close()
 
+def updateStatus(newText):
+    bs = '\b' * 1000
+
+    sys.stdout.write(bs + "\r")
+    sys.stdout.write(newText)
+    sys.stdout.flush()
+
+
 
 def openFile(filename, delin):
     output = []

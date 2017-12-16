@@ -1,6 +1,7 @@
 import utility
 import scrapeDepartments
 import scrapeCoursesFromWebReg
+import scrapeWebReg
 import cookieHelper
 import getAvailableQuarters
 
@@ -12,18 +13,26 @@ from bs4 import BeautifulSoup
 
 def main():
 
-    utility.checkInput(["outputFile", "quarterCode"], [])
+    utility.checkInput(["quarterCode", "departOutputFile", "courseListOutputFile", "courseDataOutputFile"], [])
     utility.checkCred()
 
-    outputFilename = sys.argv[1]
-    quarterCode = sys.argv[2]
+    quarterCode = sys.argv[1]
+
+    outputDepart = sys.argv[2]
+    outputCourseList = sys.argv[3]
+    outputCourseData = sys.argv[4]
+
     cookie = utility.getCookie()
 
     print("Scraping departments...")
     departData = scrapeDepartments.getDepartCodesAndNames()
+    utility.printData(departData, outputDepart)
     print("Scraping courses ...")
     courseData = scrapeCoursesFromWebReg.getCourseCodesAndNames(departData, quarterCode, cookie)
-    scrapeCoursesFromWebReg.printCourseData(courseData, outputFilename)
+    utility.printData(courseData, outputCourseList)
+    print("Scraping data for all courses ...")
+    extraCourseData = scrapeWebReg.getCourseData(courseData, cookie)
+    utility.printData(extraCourseData, outputCourseData)
 
 
 

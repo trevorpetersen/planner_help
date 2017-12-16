@@ -31,6 +31,7 @@ def getCourseCodesAndNames(departData, quarterCode, cookie):
         for i in range(0, len(departData)):
 
             departName = departData[i]["DepartCode"]
+            utility.updateStatus("Getting courses for " + departName)
             url = utility.WEBREG_COURSES.format(departName,departName, quarterCode)
             headers = {
             "Cookie": cookie
@@ -39,8 +40,8 @@ def getCourseCodesAndNames(departData, quarterCode, cookie):
             data = json.loads(result.content)
             for obj in data:
                 courseData.append(obj)
-                #courseData.append([obj["SUBJ_CODE"], obj["CRSE_CODE"]])
 
+        sys.stdout.write('\n')
         return courseData
 
 def printCourseData(courseData, filename):

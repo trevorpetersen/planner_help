@@ -6,7 +6,10 @@ Setup:
 
   pip install -r requirements.txt
 
-  * Note: Some of the scripts require a valid WebReg cookie to use. If you wish
+
+Setting up cred.py (optional):
+
+  Some of the scripts require a valid WebReg cookie to use. If you wish
   to use one of these functions, open cred.py and add a username/password or
   add a cookie by copying and pasting the output of cookieHelper.py
 
@@ -22,8 +25,13 @@ Examples:
   added credentials to cred.py) to a file named "currentCourses.txt"
     python scrape.py currentCourses.txt WI18
 
+  Scape course data from webreg for a list of courses (you must have already
+  added credentials to cred.py) and save it to a file named "courseData.txt"
+    python scrapeWebReg.py currentCourses.txt courseData.txt
 
-Uses:
+
+
+Overview:
 
   This library provides the following scrips:
 
@@ -37,32 +45,33 @@ Uses:
 
     *** The following require you to provide credentials ***
 
-    * scrape.py - gets an up to date list of departments and then saves all the
-      current courses from WebReg
-    * scrapeCoursesFromWebReg.py - save a list of current courses at UCSD to a
-      tab delimited file
+    * scrape.py - save list of departments, courses and course data for a specified quarter
+    * scrapeCoursesFromWebReg.py - save a list of courses for a specified quarter
     * getAvailableQuarters.py - prints a list of terms currently available for
       scraping (such as WI18 or FA17)
 
 Script Details:
 
-  -- scrape.py --
-    Gets an up to date list of departments and then saves all the current
-    courses from WebReg
+  -- scrape.py -- [Requires Credentials]
+    Saves to files tab delimited lists of departments, courses and course data
 
-      Usage: python scrape.py outputFile quarterCode
+      Usage: python scrape.py quarterCode departOutputFile courseListOutputFile courseDataOutputFile
+
+        quarterCode - the term code of the term to scrape (see getAvailableQuarters.py)
+        departOutputFile - the name of the file to save the departments to
+        courseListOutputFile - the name of the file to save the list of courses to
+        courseDataOutputFile - the name of the file to save the course data to
+
+
+
+  -- scrapeCoursesFromWebReg.py -- [Requires Credentials]
+    Save a tab delimited list of courses offered during a specified quarter
+
+      Usage: python scrapeCoursesFromWebReg.py departmentsFile outputFile quarterCode
+        departmentsFile - a tab delimited list of departments
         outputFile - the name of the file to save the departments to
-        quarterCode - the term code of the term to scrape (like WI18)
+        quarterCode - the term code of the term to scrape (see getAvailableQuarters.py)
 
-
-    -- scrapeCoursesFromWebReg.py --
-      Save a list of current courses at UCSD to a tab delimited file
-
-        Usage: python scrapeCoursesFromWebReg.py departmentsFile outputFile QuarterCode
-          departmentsFile - a tab delimited list of departments, where the first
-          entry is the department code
-          outputFile - the name of the file to save the departments to
-          quarterCode - the term code of the term to scrape (like WI18)
 
 
   --scrapeDepartments.py --
@@ -73,16 +82,17 @@ Script Details:
 
 
   -- scrapeAllCourses.py --
-  TODO
+  Coming Soon
+
 
 
   -- scrapeCapes.py --
-    Given a tab delimited file of courses, save a list of capes to a tab
-    delimited file.
+    Given a tab delimited file of courses, save a tab delimited list of capes
 
       Usage: python scrapeCapes.py coursesFile outputFile
         coursesFile - a tab delimited file of courses to get capes for
         outputFile - the name of the file to save the cape data to
+
 
 
   -- cookieHelper.py -- [Requires Credentials]
@@ -90,6 +100,8 @@ Script Details:
     returned by the server
 
       Usage: python cookieHelper.py
+
+
 
   -- getAvailableQuarters.py -- [Requires Credentials]
     Prints a list of the terms that can be scraped from WebReg
