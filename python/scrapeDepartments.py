@@ -9,18 +9,18 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 
 def main():
 
-    utility.checkInput(1,["outputFile"],[])
+    utility.checkInput(["outputFile"],[])
     outputFilename = sys.argv[1]
     scrapeDepartments(outputFilename)
 
 
 def scrapeDepartments(filename):
-    courseData = getDepartCodesAndNames()
-    printDepartData(courseData, filename)
+    departData = getDepartCodesAndNames()
+    utility.printData(departData, filename)
 
 def getDepartCodesAndNames():
 
-    courseData = []
+    departData = []
     for i in range (0, len(letters)):
         url = utility.DEPARTMENT_URL + letters[i].upper()
         result = requests.get(url)
@@ -31,23 +31,13 @@ def getDepartCodesAndNames():
         classes = table.findAll('li')
 
         for x in range(0, len(classes)):
-            course = classes[x]
-            courseStuff = course.text.split('-')
-            courseCode = courseStuff[0].strip()
-            courseName = courseStuff[1].strip()
-            courseData.append([courseCode, courseName])
+            depart = classes[x]
+            departStuff = depart.text.split('-')
+            departCode = departStuff[0].strip()
+            departName = departStuff[1].strip()
+            departData.append({"DepartCode": departCode, "DepartName":departName})
 
-    return courseData
-
-def printDepartData(departData, filename):
-    outputFile = open(filename, 'w')
-
-    for depart in departData:
-        outputFile.write(depart[0] + "\t" + depart[1] + '\n')
-        
-    outputFile.close()
-
-
+    return departData
 
 if __name__ == "__main__":
     main()

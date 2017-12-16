@@ -8,7 +8,7 @@ import csv
 from bs4 import BeautifulSoup
 
 def main():
-    utility.checkInput(2, ["coursesFile", "outputFile"], [])
+    utility.checkInput(["coursesFile", "outputFile"], [])
     filename = sys.argv[1]
     outputFilename = sys.argv[2]
     classes = utility.openFile(filename, '\t')

@@ -11,9 +11,10 @@ WEBREG_COURSES = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-by-al
 WEBREG_START = "https://act.ucsd.edu/webreg2/start"
 WEBREG_LOGIN = "https://a4.ucsd.edu/tritON/Authn/UserPassword"
 WEBREG_AVAILABLE_QUARTERS = "https://act.ucsd.edu/webreg2/svc/wradapter/get-term"
+WEBREG_COURSE_DATA = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode=WI18"
 
-def checkInput(numFiles, req, opt):
-    if len(sys.argv) != numFiles + 1:
+def checkInput(req, opt):
+    if len(sys.argv) != len(req) + 1:
         printUsage(req, opt)
         sys.exit(1)
 
@@ -44,6 +45,33 @@ def printUsage(required, optional=[]):
 
     print("Usage: python " + sys.argv[0] + outputText)
 
+def printData(courseData, filename):
+    outputFile = open(filename, 'w')
+
+    if(len(courseData) > 0):
+        keys = list(courseData[0].keys())
+
+        headers = ""
+        for i in range(0, len(keys)):
+            if(i == 0):
+                headers += keys[i]
+            else:
+                headers += "\t" + keys[i]
+
+        outputFile.write(headers + '\n')
+
+
+    for course in courseData:
+        row = ''
+        for i in range(0, len(keys)):
+            if(i == 0):
+                row += str(course[keys[i]])
+            else:
+                row += "\t" + str(course[keys[i]])
+
+        outputFile.write(row + '\n')
+    outputFile.close()
+
 
 def openFile(filename, delin):
     output = []
@@ -53,3 +81,25 @@ def openFile(filename, delin):
             output.append(row)
 
     return output
+
+def processRow(headers,row):
+    """
+    Stores the data from the row into a dictionary
+    Key : Column Name
+    """
+    dataRow = {k : v for (k,v) in zip(headers,row) }
+    return dataRow
+
+
+def processData(filename, delin):
+    """
+    Main function to prcess the csv
+    """
+    data = []
+    with open(filename,'r') as tsvfile:
+        reader = csv.reader(tsvfile, delimiter=delin)
+        headers = next(reader)
+        for row in reader:
+            dataRow = processRow(headers,row)
+            data.append(dataRow)
+    return data

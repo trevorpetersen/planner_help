@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 
 def main():
 
-    utility.checkInput(2, ["outputFile", "quarterCode"], [])
+    utility.checkInput(["outputFile", "quarterCode"], [])
     utility.checkCred()
 
     outputFilename = sys.argv[1]
