@@ -13,7 +13,7 @@ WEBREG_LOGIN = "https://a4.ucsd.edu/tritON/Authn/UserPassword"
 WEBREG_AVAILABLE_QUARTERS = "https://act.ucsd.edu/webreg2/svc/wradapter/get-term"
 WEBREG_COURSE_DATA = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode=WI18"
 
-def checkInput(req, opt):
+def checkInput(req, opt=[]):
     if len(sys.argv) != len(req) + 1:
         printUsage(req, opt)
         sys.exit(1)

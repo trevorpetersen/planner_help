@@ -4,6 +4,7 @@ Setup:
   to install these libraries: requests, BeautifulSoup. Use the following
   command:
 
+  Linux:
   pip install -r requirements.txt
 
 
@@ -67,10 +68,10 @@ Script Details:
   -- scrapeCoursesFromWebReg.py -- [Requires Credentials]
     Save a tab delimited list of courses offered during a specified quarter
 
-      Usage: python scrapeCoursesFromWebReg.py departmentsFile outputFile quarterCode
-        departmentsFile - a tab delimited list of departments
-        outputFile - the name of the file to save the departments to
-        quarterCode - the term code of the term to scrape (see getAvailableQuarters.py)
+    Usage: python scrapeCoursesFromWebReg.py departmentsFile outputFile quarterCode
+      departmentsFile - a tab delimited list of departments
+      outputFile - the name of the file to save the departments to
+      quarterCode - the term code of the term to scrape (see getAvailableQuarters.py)
 
 
 
@@ -82,7 +83,11 @@ Script Details:
 
 
   -- scrapeAllCourses.py --
-  Coming Soon
+  Save a list of all courses at UCSD to a tab delimited file
+
+    Usage: python scrapeAllCourses.py departmentsFile outputFile
+      departmentsFile - a tab delimited list of departments
+      outputFile - the name of the file to save the courses to
 
 
 

@@ -6,7 +6,7 @@ import json
 from bs4 import BeautifulSoup
 
 def main():
-    utility.checkInput(['departments', 'outputFile']);
+    utility.checkInput(['departmentsFile', 'outputFile']);
 
     filename = sys.argv[1]
     outputFileName = sys.argv[2]
