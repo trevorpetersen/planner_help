@@ -110,6 +110,10 @@ text-align: center;
   border-bottom: solid 1px #007bff;
 }
 
+.nav-link{
+  cursor: default;
+}
+
 
 
 
