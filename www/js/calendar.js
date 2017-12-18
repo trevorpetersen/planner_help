@@ -1,6 +1,6 @@
 var colors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6', 'color-7', 'color-8'];
 var colorIndex = 0;
-calendarDayHeight = 45;
+calendarDayHeight = 30;
 
 function createCalendar(){
   let calDiv = document.getElementById('cal');
@@ -224,18 +224,21 @@ function highlightSlot(id, top, height,color, currentClass, showName){
     classNameHeader.classList.add('classname-p');
     classNameHeader.classList.add('class-info');
     $(classNameHeader).text(className);
+    setTooltip(classNameHeader, sectionCode, "bottom");
     infoHolder.appendChild(classNameHeader);
 
+    // TODO Remove
     let hr = document.createElement('hr');
     hr.classList.add('calendar-break');
-    infoHolder.appendChild(hr);
+    //infoHolder.appendChild(hr);
 
+    // TODO Remove
     let sectionInfo = document.createElement('p');
     sectionInfo.classList.add('section-p');
     sectionInfo.classList.add('class-info');
     sectionInfo.classList.add('calendar-text-small');
     $(sectionInfo).text(sectionCode);
-    infoHolder.appendChild(sectionInfo);
+    //infoHolder.appendChild(sectionInfo);
 
     slot.appendChild(infoHolder);
   }

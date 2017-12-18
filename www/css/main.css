@@ -6,13 +6,20 @@ body{
   overflow: scroll;
 }
 
+#navbar{
+  height: 5%;
+}
+
 #content-holder{
   width: 100%;
+  height: 95%;
 }
 
 .tab-data{
-  margin-top: 50px;
+  /*border: solid #bdc3c7 1px; */
+  padding-top: 25px;
   width: 100%;
+  height: 75%;
 }
 @media only screen and (max-width: 900px) {
   .tab-data{
@@ -87,7 +94,7 @@ body{
 }
 
 .controls{
-  margin-top: 20px;
+  padding-top: 20px;
   height: 10%;
 }
 
@@ -96,7 +103,7 @@ text-align: center;
 }
 
 .styled-box{
-  box-shadow: 3px 3px grey;
+  box-shadow: 2px 2px grey;
 }
 
 .selected-nav{

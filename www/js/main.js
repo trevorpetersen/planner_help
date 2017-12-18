@@ -339,6 +339,14 @@ function showTab(id){
 
 }
 
+function setTooltip(element, tooltipText, posistion){
+  $(element).attr("data-toggle","tooltip");
+  $(element).attr("title",tooltipText);
+  $(element).attr("data-placement",posistion);
+
+  $(element).tooltip();
+}
+
 function bundleCoursesAndCapes(courses, capes){
   let courseBundles = new Array();
   for(let i = 0; i < courses.length; i++){
