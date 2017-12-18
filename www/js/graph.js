@@ -13,15 +13,21 @@ function setGraph(course){
 }
 
 function createBars(course){
-
   let sectionArray = course.sections;
   let graphContainer = document.getElementById("graph-container");
 
   sectionArray.sort(function(a,b){return b.averageGrade - a.averageGrade});
 
+  // Sometimes one professor teaches multiple sections. We only want 1 bar graph
+  let seen = {};
   for(let i = 0; i < sectionArray.length; i++){
-    let bar = document.createElement("div");
     let currentSection = sectionArray[i];
+
+    if(seen[currentSection.professor] == true){
+      continue;
+    }
+
+    let bar = document.createElement("div");
 
     let width;
     if(currentSection.averageGrade != 0){
@@ -44,6 +50,7 @@ function createBars(course){
     $(bar).css("width", width + "%");
     graphContainer.appendChild(bar);
 
+    seen[currentSection.professor] = true;
   }
 }
 

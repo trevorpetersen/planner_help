@@ -42,12 +42,13 @@ class Course{
     this.id = id;
   }
 
-  getSectionByProfessor(professor){
+  getSectionsByProfessor(professor){
+    let sections = []
     for(let i = 0; i < this.sections.length; i++){
       if(this.sections[i].professor.toLowerCase() == professor.toLowerCase()){
-        return this.sections[i];
+        sections.push(this.sections[i]);
       }
     }
-    return null;
+    return sections;
   }
 }

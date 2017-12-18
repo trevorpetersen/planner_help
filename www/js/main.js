@@ -22,34 +22,6 @@ $(document).ready(function(){
   showTab('SCH-data');
 });
 
-function createBarGraph(title, labels, data){
-  var ctx = document.getElementById("gpa-bar-graph").getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: title,
-            data: data,
-            backgroundColor: graphColors,
-            borderColor: graphColors,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-
-
-}
-
 function addClassInput(val){
   let newInput = createClassInput(val);
   document.getElementById("class-input-holder").appendChild(newInput);
@@ -187,6 +159,7 @@ function displayResults(){
     }
 
     getCapeObjects(classesArray).then(function(objArray){
+
       for(let i = 0; i < objArray.length; i++){
         let obj = objArray[i];
         let className = obj.courseName;
@@ -202,8 +175,9 @@ function displayResults(){
             continue;
           }
           let professorName = capesForSection[0].instructor;
-          let section = courseObject.getSectionByProfessor(professorName);
-          if(section != null){
+          let sections = courseObject.getSectionsByProfessor(professorName);
+          for(let i = 0; i < sections.length; i++){
+            let section = sections[i];
             section.capes = capesForSection;
             section.averageGrade = getAverageGPA(capesForSection);
 
