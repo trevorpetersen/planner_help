@@ -7,12 +7,14 @@ from bs4 import BeautifulSoup
 
 
 def main():
-    filename = sys.argv[1]
-    classes = getClassesFromFile(filename)
+    return
+    #filename = sys.argv[1]
+    #classes = getClassesFromFile(filename)
 
-    for x in range(0, len(classes)):
-        className = classes[x]
-        #className = 'BIEB 121'
+    #for x in range(0, len(classes)):
+    for x in range(0, 1):
+        #className = classes[x]
+        className = 'CSE 100'
         url = "https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudentResult.htm"
         headers = {
         'Host': 'act.ucsd.edu',
@@ -112,6 +114,8 @@ def main():
 
         result = requests.post(url, headers=headers, data = data)
         soup = BeautifulSoup(result.content, "lxml")
+        return soup
+
         course_data = []
 
         if(len(soup.findAll("table")) < 2):
@@ -200,4 +204,5 @@ def getClassesFromFile(filename):
 
     return classes
 
-main()
+if __name__ == "__main__":
+    main()

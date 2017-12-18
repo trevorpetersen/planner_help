@@ -1,4 +1,5 @@
 import utility
+
 import sys
 import requests
 import json
@@ -8,23 +9,27 @@ from bs4 import BeautifulSoup
 
 def main():
 
-    utility.checkInput(["coursesFile", "outputFile"],[])
+    utility.checkInput(["coursesFile", "outputFile", "quarterCode"],[])
     utility.checkCred()
 
     filename = sys.argv[1]
     outputFilename = sys.argv[2]
+    quarterCode = sys.argv[3]
+
     courses = utility.processData(filename, '\t')
 
     cookie = utility.getCookie()
 
-    scrapeWebReg(courses, outputFilename, cookie)
+    utility.checkQuarterCode(quarterCode, cookie)
 
-def scrapeWebReg(courses, outputFilename, cookie):
-    courseData = getCourseData(courses, cookie)
+    scrapeWebReg(courses, outputFilename, quarterCode, cookie)
+
+def scrapeWebReg(courses, outputFilename, quarterCode, cookie):
+    courseData = getCourseData(courses, quarterCode, cookie)
     utility.printData(courseData, outputFilename)
 
 
-def getCourseData(courses, cookie):
+def getCourseData(courses, quarterCode, cookie):
     courseData = []
     for x in range(0, len(courses)):
 
@@ -37,7 +42,7 @@ def getCourseData(courses, cookie):
         "Cookie": cookie
         }
 
-        formatted = utility.WEBREG_COURSE_DATA.format(courseName, courseCode);
+        formatted = utility.WEBREG_COURSE_DATA.format(courseName, courseCode, quarterCode);
         result = requests.get(formatted, headers=headers)
         data = json.loads(result.content)
 

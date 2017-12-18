@@ -1,5 +1,4 @@
 import utility
-import cred
 
 import sys
 import requests
@@ -8,13 +7,15 @@ import csv
 from bs4 import BeautifulSoup
 
 def main():
-    utility.checkInput(["departmentsFile", "outputFile", "QuarterCode"],[])
+    utility.checkInput(["departmentsFile", "outputFile", "quarterCode"],[])
     utility.checkCred()
 
     departmentsFileName = sys.argv[1]
     outputFileName = sys.argv[2]
     quarterCode = sys.argv[3]
     cookie = utility.getCookie()
+
+    utility.checkQuarterCode(quarterCode, cookie)
 
     departData = utility.processData(departmentsFileName, '\t')
 

@@ -1,5 +1,5 @@
 import utility
-import getAvailableQuarters
+import availableQuarters
 import cred
 
 import sys
@@ -15,14 +15,20 @@ def main():
 def getCookieWithPrompt():
     username = raw_input("Username: ")
     password = getpass.getpass("Password: ")
-    session = requests.Session()
-    navigateToLogin(session)
-    return login(session, username, password)
+    return getCookie(username, password)
 
 def getCookie(username, password):
     session = requests.Session()
     navigateToLogin(session)
     return login(session, username, password)
+
+def cookieIsValid(cookie):
+    headers = {
+    "Cookie": cookie
+    }
+
+    result = requests.get(utility.WEBREG_START, headers = headers, allow_redirects=False)
+    return (result.status_code == 200)
 
 def navigateToLogin(session):
     result = session.get(utility.WEBREG_START)
@@ -38,6 +44,9 @@ def login(session, username, password):
 
     #print(session.cookies.get_dict())
     result = session.post(utility.WEBREG_LOGIN, data = payload)
+    if ("Login failed" in result.content):
+        print("Incorrect username/password")
+        sys.exit(1)
 
     soup = BeautifulSoup(result.content, "lxml")
     redirectForm = soup.find("form")
@@ -56,7 +65,7 @@ def login(session, username, password):
     payload["submit"] = "submit"
     result = session.post(nextURL, data = payload)
 
-    terms = getAvailableQuarters.getAvailableQuartersUsingSession(session)
+    terms = availableQuarters.getAvailableQuartersUsingSession(session)
     for term in terms:
         loadWebregStuff(session, term["termCode"], term["seqId"])
 
@@ -73,7 +82,7 @@ def login(session, username, password):
 def loadWebregStuff(session, quarterCode, seqID):
     result = session.get("https://act.ucsd.edu/webreg2/svc/wradapter/get-status-start?termcode={0}&seqid={1}".format(quarterCode, seqID))
     #print(result.content)
-    result = session.get("https://act.ucsd.edu/webreg2/svc/wradapter/check-eligibility?termcode={0}&seqid={1}&logged=true".format(quarterCode, seqID))
+    result = session.get(utility.WEBREG_CHECK_QUARTER.format(quarterCode, seqID))
     #print(result.content)
     result = session.get("https://act.ucsd.edu/webreg2/svc/wradapter/get-msg-to-proceed?termcode={0}".format(quarterCode))
     #print(result.content)

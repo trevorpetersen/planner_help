@@ -1,5 +1,6 @@
 import cred
 import cookieHelper
+import availableQuarters
 
 import sys
 import csv
@@ -11,7 +12,8 @@ WEBREG_COURSES = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-by-al
 WEBREG_START = "https://act.ucsd.edu/webreg2/start"
 WEBREG_LOGIN = "https://a4.ucsd.edu/tritON/Authn/UserPassword"
 WEBREG_AVAILABLE_QUARTERS = "https://act.ucsd.edu/webreg2/svc/wradapter/get-term"
-WEBREG_COURSE_DATA = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode=WI18"
+WEBREG_COURSE_DATA = "https://act.ucsd.edu/webreg2/svc/wradapter/secure/search-load-group-data?subjcode={0}&crsecode={1}&termcode={2}"
+WEBREG_CHECK_QUARTER = "https://act.ucsd.edu/webreg2/svc/wradapter/check-eligibility?termcode={0}&seqid={1}&logged=true"
 
 def checkInput(req, opt=[]):
     if len(sys.argv) != len(req) + 1:
@@ -20,12 +22,21 @@ def checkInput(req, opt=[]):
 
 def checkCred():
     if(cred.cookie != ''):
-        return
+        if(cookieHelper.cookieIsValid(cred.cookie)):
+            return
+        else:
+            print("Cookie is invalid. Falling back to username/password")
+
     if(cred.username != '' and cred.password != ''):
         return
 
-    print('Error: Please add a username/password or cookie to cred.py and retry\n')
+    print('Error: Please add a valid username/password or cookie to cred.py and retry\n')
     sys.exit(1)
+
+def checkQuarterCode(quarterCode, cookie):
+    if(availableQuarters.isValidQuarterCode(quarterCode, cookie) is False):
+        print(quarterCode + " is not currently available. Run availableQuarters.py to see available quarters")
+        sys.exit(1)
 
 def getCookie():
     checkCred();
@@ -79,16 +90,6 @@ def updateStatus(newText):
     sys.stdout.write(newText)
     sys.stdout.flush()
 
-
-
-def openFile(filename, delin):
-    output = []
-    with open(filename, 'rb') as csvfile:
-        reader = csv.reader(csvfile, delimiter= delin)
-        for row in reader:
-            output.append(row)
-
-    return output
 
 def processRow(headers,row):
     """
