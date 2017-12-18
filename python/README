@@ -42,9 +42,9 @@ Overview:
 
     *** The following require you to provide credentials ***
 
-    * scrapeAll.py - save list of departments, courses and course data for a specified quarter
+    * scrapeAll.py - save list of departments, courses and course data
     * courses.py - save a list of courses for a specified quarter
-    * courseData.py - save a list of course data for specified courses and quarter
+    * courseData.py - save a list of course data for specified courses
     * availableQuarters.py - prints a list of terms currently available for
       scraping (such as WI18 or FA17)
 
@@ -53,10 +53,10 @@ Script Details:
   -- scrapeAll.py -- [Requires Credentials]
     Saves to files tab delimited lists of departments, courses and course data
 
-      Usage: python scrapeAll.py departOutputFile courseListOutputFile courseDataOutputFile quarterCode
-        departOutputFile - the name of the file to save the departments to
-        courseListOutputFile - the name of the file to save the list of courses to
-        courseDataOutputFile - the name of the file to save the course data to
+      Usage: python scrapeAll.py departOut courseListOut courseDataOut quarterCode
+        departOut - the name of the file to save the departments to
+        courseListOut - the name of the file to save the list of courses to
+        courseDataOut - the name of the file to save the course data to
         quarterCode - the term code of the term to scrape (see getAvailableQuarters.py)
 
 
