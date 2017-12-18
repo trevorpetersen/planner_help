@@ -63,7 +63,7 @@ function getNewUpdateTime(){
       let repoObject = body;
 
       if(repoObject.pushed_at == null){
-        reject("JSON response has not \"pushed_at\" field");
+        reject("JSON response has no \"pushed_at\" field");
       }
       resolve(repoObject.pushed_at)
     });
