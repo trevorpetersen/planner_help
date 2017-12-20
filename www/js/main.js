@@ -1,5 +1,7 @@
 /*TODO
   Make sure that all capes are being gotten
+  Fix height of cal on mobile
+  Add a loading spinner
 */
 
 var user = new User();
@@ -7,6 +9,7 @@ var currentClasses;
 var displayedClassNum;
 var graphColors = ['blue', 'red', 'green', 'pink', 'orange', 'purple', 'black'];
 var isLoading = false;
+var selectedTabID = 'SCH-data';
 
 $(document).ready(function(){
   hideTabs();
@@ -19,7 +22,7 @@ $(document).ready(function(){
   hideCalendar();
   createCalendar();
 
-  showTab('SCH-data');
+  showTab(selectedTabID);
 });
 
 function addClassInput(val){
@@ -125,6 +128,8 @@ function displayResults(){
     return;
   }
   isLoading = true;
+  $(".loader").show();
+  hideTabs();
   resetCalendar();
   resetGraph();
   getDataOnAllClasses().then(function(classesArray){
@@ -200,6 +205,8 @@ function displayResults(){
 
       createGraph(user.courses);
       isLoading = false;
+      $(".loader").hide();
+      showTab(selectedTabID);
     })
   });
 }
@@ -299,6 +306,7 @@ function switchTab(obj){
 
       hideTabs();
       showTab(obj.id + '-data');
+      selectedTabID = obj.id + '-data';
       break;
   }
 }
@@ -310,7 +318,6 @@ function hideTabs(){
 function showTab(id){
   let tab = document.getElementById(id);
   $(tab).show();
-
 }
 
 function setTooltip(element, tooltipText, posistion){
