@@ -1,7 +1,6 @@
 /*TODO
   Make sure that all capes are being gotten
   Fix height of cal on mobile
-  Add a loading spinner
 */
 
 var user = new User();

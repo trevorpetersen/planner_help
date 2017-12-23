@@ -1,6 +1,5 @@
 var colors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6', 'color-7', 'color-8'];
 var colorIndex = 0;
-calendarDayHeight = 30;
 
 function createCalendar(){
   let calDiv = document.getElementById('cal');
@@ -15,7 +14,7 @@ function createCalendar(){
     if(i != 0){
       day.classList.add(dayString[i]);
     }
-    day.innerHTML = dayString[i]
+    day.innerHTML = dayString[i].charAt(0);
     days.appendChild(day);
   }
 
@@ -175,6 +174,7 @@ function highlightMeetings(currentClass){
 }
 
 function highlightRange(day, beginH, beginM, endH, endM, color, currentClass){
+  let calendarDayHeight = parseInt($(".col").css('height'));
   let isFirst = true;
   let hour = beginH;
   while(hour < endH){

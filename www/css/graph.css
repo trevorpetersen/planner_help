@@ -21,3 +21,7 @@
 .graph-button:hover{
   opacity: 1.0;
 }
+
+.barText{
+  padding-left: 5px;
+}

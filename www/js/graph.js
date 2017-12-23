@@ -28,6 +28,7 @@ function createBars(course){
     }
 
     let bar = document.createElement("div");
+    let barText = document.createElement("p");
 
     let width;
     if(currentSection.averageGrade != 0){
@@ -42,12 +43,16 @@ function createBars(course){
     bar.classList.add("styled-box");
     bar.classList.add("selected-color-" + course.id);
 
+    barText.classList.add("barText");
+
     let classInfo = currentSection.name + "</br>";
     let gpaInfo = currentSection.professor + ": " + avgGrade + " (" + GPAToLetterGrade(avgGrade) + ")";
     let info = classInfo + gpaInfo;
 
-    bar.innerHTML = info;
+    barText.innerHTML = info;
     $(bar).css("width", width + "%");
+
+    bar.appendChild(barText);
     graphContainer.appendChild(bar);
 
     seen[currentSection.professor] = true;
