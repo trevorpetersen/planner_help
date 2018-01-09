@@ -30,7 +30,7 @@ def main():
     coursesData = courses.getCourseCodesAndNames(departData, quarterCode, cookie)
     utility.printData(coursesData, outputCourseList)
     print("Scraping data for all courses ...")
-    extraCourseData = courseData.getCourseData(courseData, quarterCode, cookie)
+    extraCourseData = courseData.getCourseData(coursesData, quarterCode, cookie)
     utility.printData(extraCourseData, outputCourseData)
 
 
